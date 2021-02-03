@@ -33,6 +33,10 @@ public class DeudaBean implements Serializable {
 		this.idAlumno = idAlumno;
 	}
 
+	public DeudaBean(int idDeuda) {
+		this.idDeuda = idDeuda;
+	}
+
 	public DeudaBean() {
 		super();
 	}

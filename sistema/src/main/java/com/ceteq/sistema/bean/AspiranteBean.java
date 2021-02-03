@@ -52,6 +52,11 @@ public class AspiranteBean {
 				+ ", correo=" + correo + ", fechaRegistro=" + fechaRegistro + ", fechaBaja=" + fechaBaja + "]";
 	}
 
+	public AspiranteBean(int idAlumno) {
+		super();
+		this.idAlumno = idAlumno;
+	}
+
 	public int getIdAlumno() {
 		return idAlumno;
 	}

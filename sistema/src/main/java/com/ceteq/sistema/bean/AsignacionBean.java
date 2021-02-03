@@ -31,6 +31,10 @@ public class AsignacionBean implements Serializable {
 	public AsignacionBean() {
 	}
 
+	public AsignacionBean(int idAsignacion) {
+		this.idAsignacion = idAsignacion;
+	}
+
 	public int getIdAsignacion() {
 		return idAsignacion;
 	}

@@ -17,7 +17,7 @@ import javax.persistence.Temporal;
 
 @Entity
 @Table(name = "tb_procesos")
-public class ProcesoModel implements Serializable{
+public class ProcesoModel implements Serializable {
 
 	/**
 	 * 
@@ -56,6 +56,11 @@ public class ProcesoModel implements Serializable{
 	private AspiranteModel alumno;
 
 	public ProcesoModel() {
+	}
+
+	public ProcesoModel(int idProceso) {
+		super();
+		this.idProceso = idProceso;
 	}
 
 	public ProcesoModel(int idProceso, Boolean estatus, String descripcion, Date fechaAlta, Date fechaFin,

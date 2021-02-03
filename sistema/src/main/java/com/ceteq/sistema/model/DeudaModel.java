@@ -62,6 +62,11 @@ public class DeudaModel implements Serializable {
 		super();
 	}
 
+	public DeudaModel(int idDeuda) {
+		super();
+		this.idDeuda = idDeuda;
+	}
+
 	@Override
 	public String toString() {
 		return "DeudaModel [idDeuda=" + idDeuda + ", totalDeuda=" + totalDeuda + ", fechaAsignacion=" + fechaAsignacion
