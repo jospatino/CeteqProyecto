@@ -1,7 +1,5 @@
 package com.ceteq.sistema.controller;
 
-import java.util.List;
-
 import com.ceteq.sistema.serviceImpl.AspiranteImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,9 +39,9 @@ public class AspiranteController{
         return new ResponseEntity<>(aspirante.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping("/AspiranteId}")
-    public ResponseEntity<?> getAspiranteById(@PathVariable int AspiranteId){
-        return new ResponseEntity<>(aspirante.findById(AspiranteId), HttpStatus.OK);
+    @GetMapping("/{aspiranteId}")
+    public ResponseEntity<?> byId(@PathVariable int aspiranteId){
+        return new ResponseEntity<>(aspirante.findById(aspiranteId), HttpStatus.OK);
     }
 
     @PostMapping
