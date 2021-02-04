@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,7 +37,7 @@ public class ProcesoController {
 	}
 	
 	@GetMapping("/show/{idProceso}")
-	public ResponseEntity<ProcesoBean> getProceso(@RequestBody int idProceso){
+	public ResponseEntity<ProcesoBean> getProceso(@PathVariable int idProceso){
 		return new ResponseEntity<ProcesoBean>(this.procesoService.getProceso(idProceso), HttpStatus.OK);
 	}
 	
@@ -46,7 +47,7 @@ public class ProcesoController {
 	}
 	
 	@DeleteMapping("delete/{idProceso}")
-	public ResponseEntity<Boolean> deleteProceso(@RequestBody int idProceso){
+	public ResponseEntity<Boolean> deleteProceso(@PathVariable int idProceso){
 		return new ResponseEntity<Boolean>(this.procesoService.deleteProceso(idProceso), HttpStatus.OK);
 	}
 	
