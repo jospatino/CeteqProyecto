@@ -5,6 +5,8 @@ import java.util.List;
 import com.ceteq.sistema.serviceImpl.AspiranteImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,36 +26,37 @@ public class AspiranteController{
     private AspiranteImpl aspirante;
 
     @GetMapping("/count")
-    public int countAspirantes(){
-        return aspirante.countAll();
+    public ResponseEntity<?> countAspirantes(){
+        return new ResponseEntity<>(aspirante.countAll(), HttpStatus.OK);
     } 
 
     @DeleteMapping("/{AspiranteId}")
-    public void deleteAspirante(@PathVariable int AspiranteId){
+    public ResponseEntity<?> deleteAspirante(@PathVariable int AspiranteId){
         aspirante.deleteById(AspiranteId);
+        return new ResponseEntity<>(true, HttpStatus.OK);
     }
 
     @GetMapping
-    public List<AspiranteModel> all(){
-        return aspirante.findAll();
+    public ResponseEntity<?> all(){
+        return new ResponseEntity<>(aspirante.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping("/{AspiranteId}")
-    public AspiranteModel getAspiranteById(@PathVariable int AspiranteId){
-        return aspirante.findById(AspiranteId);
+    @GetMapping("/AspiranteId}")
+    public ResponseEntity<?> getAspiranteById(@PathVariable int AspiranteId){
+        return new ResponseEntity<>(aspirante.findById(AspiranteId), HttpStatus.OK);
     }
 
     @PostMapping
-    public AspiranteModel addAspirante(@RequestBody AspiranteModel asp){
+    public ResponseEntity<?> addAspirante(@RequestBody AspiranteModel asp){
         asp.setIdAlumno(0);
         aspirante.save(asp);
-        return asp;
+        return new ResponseEntity<>(true, HttpStatus.OK);
     }
 
     @PutMapping
-    public AspiranteModel updateAspirante(@RequestBody AspiranteModel asp){
+    public ResponseEntity<?> updateAspirante(@RequestBody AspiranteModel asp){
         aspirante.save(asp);
-        return asp;
+        return new ResponseEntity<>(asp, HttpStatus.OK);
     }
 
 }
