@@ -12,7 +12,7 @@ public class ProcesoBean implements Serializable {
 
 	private int idProceso;
 
-	private Boolean estatus;
+	private Short estatus;
 
 	private String descripcion;
 
@@ -29,7 +29,7 @@ public class ProcesoBean implements Serializable {
 	public ProcesoBean() {
 	}
 
-	public ProcesoBean(int idProceso, Boolean estatus, String descripcion, Date fechaAlta, Date fechaFin,
+	public ProcesoBean(int idProceso, Short estatus, String descripcion, Date fechaAlta, Date fechaFin,
 			ClaseBean clase, InstructorBean instructor, AspiranteBean alumno) {
 		super();
 		this.idProceso = idProceso;
@@ -50,11 +50,11 @@ public class ProcesoBean implements Serializable {
 		this.idProceso = idProceso;
 	}
 
-	public Boolean getEstatus() {
+	public Short getEstatus() {
 		return estatus;
 	}
 
-	public void setEstatus(Boolean estatus) {
+	public void setEstatus(Short estatus) {
 		this.estatus = estatus;
 	}
 

@@ -30,7 +30,7 @@ public class ProcesoModel implements Serializable {
 	private int idProceso;
 
 	@Column(name = "estatus", nullable = false)
-	private Boolean estatus;
+	private Short estatus;
 
 	@Column(name = "descripcion_proceso", length = 150)
 	private String descripcion;
@@ -62,7 +62,7 @@ public class ProcesoModel implements Serializable {
 		this.idProceso = idProceso;
 	}
 
-	public ProcesoModel(int idProceso, Boolean estatus, String descripcion, Date fechaAlta, Date fechaFin,
+	public ProcesoModel(int idProceso, Short estatus, String descripcion, Date fechaAlta, Date fechaFin,
 			ClaseModel clase, InstructorModel instructor, AspiranteModel alumno) {
 		super();
 		this.idProceso = idProceso;
@@ -83,11 +83,11 @@ public class ProcesoModel implements Serializable {
 		this.idProceso = idProceso;
 	}
 
-	public Boolean getEstatus() {
+	public Short getEstatus() {
 		return estatus;
 	}
 
-	public void setEstatus(Boolean estatus) {
+	public void setEstatus(Short estatus) {
 		this.estatus = estatus;
 	}
 

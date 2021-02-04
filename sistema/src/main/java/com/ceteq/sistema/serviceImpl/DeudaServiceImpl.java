@@ -26,7 +26,7 @@ public class DeudaServiceImpl implements DeudaService {
 		DeudaModel deudaModel = new DeudaModel();
 
 		deudaModel.setIdAlumno(new AsignacionModel(deudaBean.getIdAlumno()));
-		deudaModel.setFechaAsignacion(new AsignacionModel(deudaBean.getFechaAsignacion()));
+		deudaModel.setFechaAsignacion(deudaBean.getFechaAsignacion());
 		deudaModel.setFechaLiquidacion(deudaBean.getFechaLiquidacion());
 		deudaModel.setLiberado(deudaBean.getLiberado());
 		deudaModel.setTotalDeuda(deudaBean.getTotalDeuda());

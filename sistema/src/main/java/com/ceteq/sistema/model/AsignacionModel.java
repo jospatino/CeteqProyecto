@@ -38,7 +38,8 @@ public class AsignacionModel implements Serializable {
 	@Column(name = "sueldo", nullable = false)
 	private Double sueldo;
 
-	@Column(name = "deuda", nullable = false)
+	@ManyToOne
+	@JoinColumn(name = "deuda")
 	private DeudaModel Deuda;
 
 	@Column(name = "fecha_asignacion", nullable = false)

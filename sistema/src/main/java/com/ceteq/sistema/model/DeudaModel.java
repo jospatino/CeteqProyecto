@@ -31,32 +31,20 @@ public class DeudaModel implements Serializable {
 	@Column(name = "deuda_total", nullable = false)
 	private Double totalDeuda;
 
-	@ManyToOne
-	@JoinColumn(name = "fecha_asignacion")
+	@Column(name = "fecha_asignacion")
 	@Temporal(TemporalType.TIMESTAMP)
-	private AsignacionModel fechaAsignacion;
+	private Date fechaAsignacion;
 
 	@Column(name = "fecha_liquidacion")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaLiquidacion;
 
 	@Column(name = "liberacion", nullable = false)
-	private Boolean liberado;
+	private Short liberado;
 
 	@ManyToOne
 	@JoinColumn(name = "id_alumno")
 	private AsignacionModel idAlumno;
-
-	public DeudaModel(int idDeuda, Double totalDeuda, AsignacionModel fechaAsignacion, Date fechaLiquidacion,
-			Boolean liberado, AsignacionModel idAlumno) {
-		super();
-		this.idDeuda = idDeuda;
-		this.totalDeuda = totalDeuda;
-		this.fechaAsignacion = fechaAsignacion;
-		this.fechaLiquidacion = fechaLiquidacion;
-		this.liberado = liberado;
-		this.idAlumno = idAlumno;
-	}
 
 	public DeudaModel() {
 		super();
@@ -89,14 +77,6 @@ public class DeudaModel implements Serializable {
 		this.totalDeuda = totalDeuda;
 	}
 
-	public AsignacionModel getFechaAsignacion() {
-		return fechaAsignacion;
-	}
-
-	public void setFechaAsignacion(AsignacionModel fechaAsignacion) {
-		this.fechaAsignacion = fechaAsignacion;
-	}
-
 	public Date getFechaLiquidacion() {
 		return fechaLiquidacion;
 	}
@@ -105,11 +85,11 @@ public class DeudaModel implements Serializable {
 		this.fechaLiquidacion = fechaLiquidacion;
 	}
 
-	public Boolean getLiberado() {
+	public Short getLiberado() {
 		return liberado;
 	}
 
-	public void setLiberado(Boolean liberado) {
+	public void setLiberado(Short liberado) {
 		this.liberado = liberado;
 	}
 
@@ -119,6 +99,14 @@ public class DeudaModel implements Serializable {
 
 	public void setIdAlumno(AsignacionModel idAlumno) {
 		this.idAlumno = idAlumno;
+	}
+
+	public Date getFechaAsignacion() {
+		return fechaAsignacion;
+	}
+
+	public void setFechaAsignacion(Date fechaAsignacion) {
+		this.fechaAsignacion = fechaAsignacion;
 	}
 
 }

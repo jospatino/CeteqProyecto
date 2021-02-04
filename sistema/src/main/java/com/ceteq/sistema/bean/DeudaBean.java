@@ -18,11 +18,11 @@ public class DeudaBean implements Serializable {
 
 	private Date fechaLiquidacion;
 
-	private Boolean liberado;
+	private Short liberado;
 
 	private Integer idAlumno;
 
-	public DeudaBean(int idDeuda, Double totalDeuda, Date fechaAsignacion, Date fechaLiquidacion, Boolean liberado,
+	public DeudaBean(int idDeuda, Double totalDeuda, Date fechaAsignacion, Date fechaLiquidacion, Short liberado,
 			Integer idAlumno) {
 		this.idDeuda = idDeuda;
 		this.totalDeuda = totalDeuda;
@@ -71,11 +71,11 @@ public class DeudaBean implements Serializable {
 		this.fechaLiquidacion = fechaLiquidacion;
 	}
 
-	public Boolean getLiberado() {
+	public Short getLiberado() {
 		return liberado;
 	}
 
-	public void setLiberado(Boolean liberado) {
+	public void setLiberado(Short liberado) {
 		this.liberado = liberado;
 	}
 
