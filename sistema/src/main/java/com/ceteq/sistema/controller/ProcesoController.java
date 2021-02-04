@@ -14,9 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ceteq.sistema.bean.AspiranteBean;
-import com.ceteq.sistema.bean.ClaseBean;
-import com.ceteq.sistema.bean.InstructorBean;
 import com.ceteq.sistema.bean.ProcesoBean;
 import com.ceteq.sistema.serviceImpl.ProcesoServiceImpl;
 
@@ -27,13 +24,13 @@ public class ProcesoController {
 	private ProcesoServiceImpl procesoService;
 	
 	@PostMapping("/create")
-	public ResponseEntity<Boolean> crearProceso(@RequestBody ProcesoBean procesoBean, AspiranteBean aspiranteBean, ClaseBean claseBean, InstructorBean instructorBean){
-		return new ResponseEntity<Boolean>(this.procesoService.crearProceso(procesoBean, aspiranteBean, claseBean, instructorBean), HttpStatus.ACCEPTED);
+	public ResponseEntity<Boolean> crearProceso(@RequestBody ProcesoBean procesoBean){
+		return new ResponseEntity<Boolean>(this.procesoService.crearProceso(procesoBean), HttpStatus.ACCEPTED);
 	}
 	
 	@PutMapping("/update")
-	public ResponseEntity<Boolean> updateProceso(@RequestBody ProcesoBean procesoBean, AspiranteBean aspiranteBean, ClaseBean claseBean, InstructorBean instructorBean){
-		return new ResponseEntity<Boolean>(this.procesoService.actualizaProceso(procesoBean, aspiranteBean, claseBean, instructorBean), HttpStatus.OK);
+	public ResponseEntity<Boolean> updateProceso(@RequestBody ProcesoBean procesoBean){
+		return new ResponseEntity<Boolean>(this.procesoService.actualizaProceso(procesoBean), HttpStatus.OK);
 	}
 	
 	@GetMapping("/show/{idProceso}")
