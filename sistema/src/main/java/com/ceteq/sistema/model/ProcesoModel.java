@@ -59,7 +59,6 @@ public class ProcesoModel implements Serializable {
 	}
 
 	public ProcesoModel(int idProceso) {
-		super();
 		this.idProceso = idProceso;
 	}
 
