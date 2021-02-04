@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ceteq.sistema.bean.ClaseBean;
-import com.ceteq.sistema.bean.ProcesoBean;
 import com.ceteq.sistema.serviceImpl.ClaseServiceImpl;
 
 @Controller

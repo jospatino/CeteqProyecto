@@ -20,17 +20,22 @@ public class ProcesoBean implements Serializable {
 
 	private Date fechaFin;
 
-	private ClaseBean clase;
+	private int clase;
 
-	private InstructorBean instructor;
+	private int instructor;
 
-	private AspiranteBean alumno;
+	private int alumno;
 
 	public ProcesoBean() {
 	}
 
+<<<<<<< HEAD
 	public ProcesoBean(int idProceso, Short estatus, String descripcion, Date fechaAlta, Date fechaFin,
 			ClaseBean clase, InstructorBean instructor, AspiranteBean alumno) {
+=======
+	public ProcesoBean(int idProceso, Boolean estatus, String descripcion, Date fechaAlta, Date fechaFin,
+			int clase, int instructor, int alumno) {
+>>>>>>> 9e1987ea81357183364a4a60965c0dedf5de75eb
 		super();
 		this.idProceso = idProceso;
 		this.estatus = estatus;
@@ -82,27 +87,27 @@ public class ProcesoBean implements Serializable {
 		this.fechaFin = fechaFin;
 	}
 
-	public ClaseBean getClase() {
-		return clase;
+	public int getClase() {
+		return this.clase ;
 	}
 
-	public void setClase(ClaseBean clase) {
+	public void setClase(int clase) {
 		this.clase = clase;
 	}
 
-	public InstructorBean getInstructor() {
-		return instructor;
+	public int getInstructor() {
+		return this.instructor;
 	}
 
-	public void setInstructor(InstructorBean instructor) {
+	public void setInstructor(int instructor) {
 		this.instructor = instructor;
 	}
 
-	public AspiranteBean getAlumno() {
-		return alumno;
+	public int getAlumno() {
+		return this.alumno;
 	}
 
-	public void setAlumno(AspiranteBean alumno) {
+	public void setAlumno(int alumno) {
 		this.alumno = alumno;
 	}
 

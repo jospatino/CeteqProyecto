@@ -26,57 +26,40 @@ public class ProcesoServiceImpl implements ProcesoService{
 	private ProcesoRepository procesoRepo;
 	
 	@Override
-	public boolean crearProceso(ProcesoBean procesoBean, AspiranteBean aspiranteBean, ClaseBean claseBean, InstructorBean instructorBean) {
+	public boolean crearProceso(ProcesoBean procesoBean) {
 	ProcesoModel proceso = new ProcesoModel();
 	AspiranteModel aspirante = new AspiranteModel();
 	ClaseModel claseM = new ClaseModel();
 	InstructorModel instructor = new InstructorModel();
-	proceso.setIdProceso(procesoBean.getIdProceso());
+	claseM.setIdClase(procesoBean.getClase());
+	instructor.setIdInstructor(procesoBean.getInstructor());
+	aspirante.setIdAlumno(procesoBean.getAlumno());
 	proceso.setEstatus(procesoBean.getEstatus());
 	proceso.setDescripcion(procesoBean.getDescripcion());
 	proceso.setFechaAlta(procesoBean.getFechaAlta());
 	proceso.setFechaFin(procesoBean.getFechaFin());
-	claseM.setIdClase(claseBean.getIdClase());
-	instructor.setIdInstructor(instructorBean.getIdInstructor());
-	aspirante.setIdAlumno(aspiranteBean.getIdAlumno());
-	aspirante.setNombre(aspiranteBean.getNombre());
-	aspirante.setApP(aspiranteBean.getApP());
-	aspirante.setApM(aspiranteBean.getApM());
-	aspirante.setEdad(aspiranteBean.getEdad());
-	aspirante.setDireccion(aspiranteBean.getDireccion());
-	aspirante.setCiudad(aspiranteBean.getCiudad());
-	aspirante.setTelefono(aspiranteBean.getTelefono());
-	aspirante.setCorreo(aspiranteBean.getCorreo());
-	aspirante.setFechaRegistro(aspiranteBean.getFechaRegistro());
-	aspirante.setFechaBaja(aspiranteBean.getFechaBaja());
+	proceso.setClase(claseM);
+	proceso.setInstructor(instructor);
 	proceso.setAlumno(aspirante);
 	this.procesoRepo.save(proceso);
 	return true;
 	}
 
 	@Override
-	public boolean actualizaProceso(ProcesoBean procesoBean, AspiranteBean aspiranteBean, ClaseBean claseBean, InstructorBean instructorBean ) {
+	public boolean actualizaProceso(ProcesoBean procesoBean) {
 		ProcesoModel proceso = this.procesoRepo.findById(procesoBean.getIdProceso()).orElseThrow();
 		AspiranteModel aspirante = new AspiranteModel();
 		ClaseModel claseM = new ClaseModel();
 		InstructorModel instructor = new InstructorModel();
+		claseM.setIdClase(procesoBean.getClase());
+		instructor.setIdInstructor(procesoBean.getInstructor());
+		aspirante.setIdAlumno(procesoBean.getAlumno());
 		proceso.setEstatus(procesoBean.getEstatus());
 		proceso.setDescripcion(procesoBean.getDescripcion());
 		proceso.setFechaAlta(procesoBean.getFechaAlta());
 		proceso.setFechaFin(procesoBean.getFechaFin());
-		claseM.setIdClase(claseBean.getIdClase());
-		instructor.setIdInstructor(instructorBean.getIdInstructor());
-		aspirante.setIdAlumno(aspiranteBean.getIdAlumno());
-		aspirante.setNombre(aspiranteBean.getNombre());
-		aspirante.setApP(aspiranteBean.getApP());
-		aspirante.setApM(aspiranteBean.getApM());
-		aspirante.setEdad(aspiranteBean.getEdad());
-		aspirante.setDireccion(aspiranteBean.getDireccion());
-		aspirante.setCiudad(aspiranteBean.getCiudad());
-		aspirante.setTelefono(aspiranteBean.getTelefono());
-		aspirante.setCorreo(aspiranteBean.getCorreo());
-		aspirante.setFechaRegistro(aspiranteBean.getFechaRegistro());
-		aspirante.setFechaBaja(aspiranteBean.getFechaBaja());
+		proceso.setClase(claseM);
+		proceso.setInstructor(instructor);
 		proceso.setAlumno(aspirante);
 		this.procesoRepo.save(proceso);
 		return true;
@@ -85,20 +68,15 @@ public class ProcesoServiceImpl implements ProcesoService{
 	@Override
 	public ProcesoBean getProceso(int idProceso) {
 		ProcesoModel proceso = this.procesoRepo.findById(idProceso).orElseThrow();
-		AspiranteBean aspiranteB = new AspiranteBean();
 		ProcesoBean procesoBean = new ProcesoBean();
-		ClaseBean claseB = new ClaseBean();
-		InstructorBean instructorB = new InstructorBean();
-		aspiranteB.setIdAlumno(proceso.getAlumno().getIdAlumno());
-		claseB.setIdClase(proceso.getClase().getIdClase());
-		instructorB.setIdInstructor(proceso.getInstructor().getIdInstructor());
-		procesoBean.setEstatus(proceso.getEstatus());
+		procesoBean.setIdProceso(proceso.getIdProceso());
 		procesoBean.setDescripcion(proceso.getDescripcion());
+		procesoBean.setEstatus(proceso.getEstatus());
 		procesoBean.setFechaAlta(proceso.getFechaAlta());
 		procesoBean.setFechaFin(proceso.getFechaFin());
-		procesoBean.setClase(claseB);
-		procesoBean.setInstructor(instructorB);
-		procesoBean.setAlumno(aspiranteB);
+		/*procesoBean.setAlumno(proceso.getAlumno().getIdAlumno());
+		procesoBean.setClase(proceso.getClase().getIdClase());
+		procesoBean.setInstructor(proceso.getInstructor().getIdInstructor());*/
 		return procesoBean;
 	}
 
@@ -108,20 +86,12 @@ public class ProcesoServiceImpl implements ProcesoService{
 		List<ProcesoModel> procesoList = this.procesoRepo.findAll();
 		List<ProcesoBean> procesoBeanList = new ArrayList<>();
 		for(int i=0 ; i<procesoList.size(); i++) {
-			AspiranteBean aspiranteB = new AspiranteBean();
 			ProcesoBean procesoBean = new ProcesoBean();
-			ClaseBean claseB = new ClaseBean();
-			InstructorBean instructorB = new InstructorBean();
-			aspiranteB.setIdAlumno(procesoList.get(i).getAlumno().getIdAlumno());
-			claseB.setIdClase(procesoList.get(i).getClase().getIdClase());
-			instructorB.setIdInstructor(procesoList.get(i).getInstructor().getIdInstructor());
-			procesoBean.setEstatus(procesoList.get(i).getEstatus());
+			procesoBean.setIdProceso(procesoList.get(i).getIdProceso());
 			procesoBean.setDescripcion(procesoList.get(i).getDescripcion());
+			procesoBean.setEstatus(procesoList.get(i).getEstatus());
 			procesoBean.setFechaAlta(procesoList.get(i).getFechaAlta());
 			procesoBean.setFechaFin(procesoList.get(i).getFechaFin());
-			procesoBean.setClase(claseB);
-			procesoBean.setInstructor(instructorB);
-			procesoBean.setAlumno(aspiranteB);
 			procesoBeanList.add(procesoBean);
 		}
 		return procesoBeanList;
