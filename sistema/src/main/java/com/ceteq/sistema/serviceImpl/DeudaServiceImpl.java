@@ -1,5 +1,6 @@
 package com.ceteq.sistema.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -41,25 +42,67 @@ public class DeudaServiceImpl implements DeudaService {
 	@Override
 	public DeudaBean findByID(Integer id) {
 		DeudaModel deudaModel = this.deudaRepository.findById(id).orElseThrow();
-		return null;
+
+		DeudaBean deudaBean = new DeudaBean();
+
+		deudaBean.setIdDeuda(deudaModel.getIdDeuda());
+		deudaBean.setIdAlumno(deudaModel.getIdAlumno().getIdAlumno().getAlumno().getIdAlumno());
+		deudaBean.setFechaAsignacion(deudaModel.getFechaAsignacion());
+		deudaBean.setFechaLiquidacion(deudaModel.getFechaLiquidacion());
+		deudaBean.setLiberado(deudaModel.getLiberado());
+		deudaBean.setTotalDeuda(deudaModel.getTotalDeuda());
+
+		return deudaBean;
 	}
 
 	@Override
 	public List<DeudaBean> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+
+		List<DeudaModel> deudaModelsList = deudaRepository.findAll();
+
+		List<DeudaBean> deudaBeansList = new ArrayList<>();
+
+		for (DeudaModel deudaModel : deudaModelsList) {
+
+			DeudaBean deudaBean = new DeudaBean();
+
+			deudaBean.setIdDeuda(deudaModel.getIdDeuda());
+			deudaBean.setIdAlumno(deudaModel.getIdAlumno().getIdAlumno().getAlumno().getIdAlumno());
+			deudaBean.setFechaAsignacion(deudaModel.getFechaAsignacion());
+			deudaBean.setFechaLiquidacion(deudaModel.getFechaLiquidacion());
+			deudaBean.setLiberado(deudaModel.getLiberado());
+			deudaBean.setTotalDeuda(deudaModel.getTotalDeuda());
+
+			deudaBeansList.add(deudaBean);
+
+		}
+
+		return deudaBeansList;
 	}
 
 	@Override
-	public Boolean updateDeuda(DeudaBean bean) {
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean updateDeuda(DeudaBean deudabean) {
+
+		DeudaModel deudaModel = this.deudaRepository.findById(deudabean.getIdDeuda()).orElseThrow();
+
+		deudaModel.setIdAlumno(new AsignacionModel(deudabean.getIdAlumno()));
+		deudaModel.setFechaAsignacion(deudabean.getFechaAsignacion());
+		deudaModel.setFechaLiquidacion(deudabean.getFechaLiquidacion());
+		deudaModel.setLiberado(deudabean.getLiberado());
+		deudaModel.setTotalDeuda(deudabean.getTotalDeuda());
+
+		this.deudaRepository.save(deudaModel);
+
+		return true;
 	}
 
 	@Override
 	public Boolean deleteDeuda(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+
+		DeudaModel deudaModel = this.deudaRepository.findById(id).orElseThrow();
+		this.deudaRepository.delete(deudaModel);
+
+		return true;
 	}
 
 }
