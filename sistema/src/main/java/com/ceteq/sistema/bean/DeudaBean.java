@@ -14,17 +14,16 @@ public class DeudaBean implements Serializable {
 
 	private Double totalDeuda;
 
-	private AsignacionBean fechaAsignacion;
+	private Date fechaAsignacion;
 
 	private Date fechaLiquidacion;
 
 	private Boolean liberado;
 
-	private AsignacionBean idAlumno;
+	private Integer idAlumno;
 
-	public DeudaBean(int idDeuda, Double totalDeuda, AsignacionBean fechaAsignacion, Date fechaLiquidacion,
-			Boolean liberado, AsignacionBean idAlumno) {
-		super();
+	public DeudaBean(int idDeuda, Double totalDeuda, Date fechaAsignacion, Date fechaLiquidacion, Boolean liberado,
+			Integer idAlumno) {
 		this.idDeuda = idDeuda;
 		this.totalDeuda = totalDeuda;
 		this.fechaAsignacion = fechaAsignacion;
@@ -33,19 +32,11 @@ public class DeudaBean implements Serializable {
 		this.idAlumno = idAlumno;
 	}
 
+	public DeudaBean() {
+	}
+
 	public DeudaBean(int idDeuda) {
 		this.idDeuda = idDeuda;
-	}
-
-	public DeudaBean() {
-		super();
-	}
-
-	@Override
-	public String toString() {
-		return "DeudaModel [idDeuda=" + idDeuda + ", totalDeuda=" + totalDeuda + ", fechaAsignacion=" + fechaAsignacion
-				+ ", fechaLiquidacion=" + fechaLiquidacion + ", liberado=" + liberado + ", asignacionModel=" + idAlumno
-				+ "]";
 	}
 
 	public int getIdDeuda() {
@@ -64,11 +55,11 @@ public class DeudaBean implements Serializable {
 		this.totalDeuda = totalDeuda;
 	}
 
-	public AsignacionBean getFechaAsignacion() {
+	public Date getFechaAsignacion() {
 		return fechaAsignacion;
 	}
 
-	public void setFechaAsignacion(AsignacionBean fechaAsignacion) {
+	public void setFechaAsignacion(Date fechaAsignacion) {
 		this.fechaAsignacion = fechaAsignacion;
 	}
 
@@ -88,11 +79,11 @@ public class DeudaBean implements Serializable {
 		this.liberado = liberado;
 	}
 
-	public AsignacionBean getIdAlumno() {
+	public Integer getIdAlumno() {
 		return idAlumno;
 	}
 
-	public void setIdAlumno(AsignacionBean idAlumno) {
+	public void setIdAlumno(Integer idAlumno) {
 		this.idAlumno = idAlumno;
 	}
 

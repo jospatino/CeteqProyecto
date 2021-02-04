@@ -6,7 +6,7 @@ import com.ceteq.sistema.bean.DeudaBean;
 
 public interface DeudaService {
 
-	public String CrearDeuda(DeudaBean deudaBean);
+	public String CreateDeuda(DeudaBean deudaBean);
 
 	public DeudaBean findByID(Integer id);
 

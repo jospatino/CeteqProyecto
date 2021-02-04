@@ -6,7 +6,7 @@ import com.ceteq.sistema.bean.AsignacionBean;
 
 public interface AsignacionService {
 
-	public String asignacion(AsignacionBean asignacionBean);
+	public String createAsignacion(AsignacionBean asignacionBean);
 
 	public AsignacionBean findByID(Integer id);
 
