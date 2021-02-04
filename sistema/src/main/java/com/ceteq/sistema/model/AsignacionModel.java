@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "tb_asignaciones")
-public class AsignacionModel implements Serializable{
+public class AsignacionModel implements Serializable {
 
 	/**
 	 * 
@@ -52,6 +52,14 @@ public class AsignacionModel implements Serializable{
 	}
 
 	public AsignacionModel() {
+	}
+
+	public AsignacionModel(int idAsignacion) {
+		this.idAsignacion = idAsignacion;
+	}
+
+	public AsignacionModel(Date fechaAsignacion) {
+		this.fechaAsignacion = fechaAsignacion;
 	}
 
 	public int getIdAsignacion() {

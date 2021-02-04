@@ -1,28 +1,18 @@
 package com.ceteq.sistema.serviceImpl;
 
-
-
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.ceteq.sistema.bean.AsignacionBean;
-import com.ceteq.sistema.bean.DeudaBean;
-import com.ceteq.sistema.bean.ProcesoBean;
 import com.ceteq.sistema.model.AsignacionModel;
 import com.ceteq.sistema.model.DeudaModel;
 import com.ceteq.sistema.model.ProcesoModel;
 import com.ceteq.sistema.repository.AsignacionRepository;
 import com.ceteq.sistema.service.AsignacionService;
-
-
-//Revisar el metodo findall para implementar el update
-
 
 @Service
 @Transactional
@@ -32,36 +22,36 @@ public class AsignacionServiceImpl implements AsignacionService {
 	private AsignacionRepository asignacionRepository;
 
 	@Override
-	public String asignacion(AsignacionBean asignacionBean) {
+	public String createAsignacion(AsignacionBean asignacionBean) {
 
 		AsignacionModel asignacionModel = new AsignacionModel();
 
-		asignacionModel.setIdAlumno(new ProcesoModel(asignacionBean.getIdAlumno().getIdProceso()));
-		asignacionModel.setDeuda(new DeudaModel(asignacionBean.getDeuda().getIdDeuda()));
-		asignacionModel.setFechaAsignacion(asignacionBean.getFechaAsignacion());
+		asignacionModel.setIdAlumno(new ProcesoModel(asignacionBean.getIdAlumno()));
 		asignacionModel.setEmpresa(asignacionBean.getEmpresa());
+		asignacionModel.setFechaAsignacion(asignacionBean.getFechaAsignacion());
 		asignacionModel.setSueldo(asignacionBean.getSueldo());
+		asignacionModel.setDeuda(new DeudaModel(asignacionBean.getDeudaId()));
 
 		asignacionRepository.save(asignacionModel);
-		String mensaje = "Registro guardado";
 
-		return mensaje;
+		String result = "Registro guardado";
+
+		return result;
 	}
 
 	@Override
 	public AsignacionBean findByID(Integer id) {
 
-		AsignacionModel asignacionModel = this.asignacionRepository.findById(id).orElseThrow(null);
+		AsignacionModel asignacionModel = this.asignacionRepository.findById(id).orElseThrow();
+
 		AsignacionBean asignacionBean = new AsignacionBean();
-		ProcesoBean procesoBean = new ProcesoBean();
-		DeudaBean deudaBean = new DeudaBean();
 
 		asignacionBean.setIdAsignacion(asignacionModel.getIdAsignacion());
-		BeanUtils.copyProperties(asignacionModel.getIdAlumno(), procesoBean);
-		asignacionBean.setIdAlumno(procesoBean);
+		asignacionBean.setIdAlumno(asignacionModel.getIdAlumno().getIdProceso());
+		asignacionBean.setDeudaId(asignacionModel.getDeuda().getIdDeuda());
+		asignacionBean.setFechaAsignacion(asignacionModel.getFechaAsignacion());
 		asignacionBean.setEmpresa(asignacionModel.getEmpresa());
 		asignacionBean.setSueldo(asignacionModel.getSueldo());
-		BeanUtils.copyProperties(asignacionModel.getDeuda(), deudaBean);
 
 		return asignacionBean;
 	}
@@ -69,34 +59,42 @@ public class AsignacionServiceImpl implements AsignacionService {
 	@Override
 	public List<AsignacionBean> findAll() {
 
-		List<AsignacionModel> asignacionModels = asignacionRepository.findAll();
+		List<AsignacionModel> asignacionModelList = asignacionRepository.findAll();
 
-		List<AsignacionBean> asignacionBeans = new ArrayList<>();
+		List<AsignacionBean> asignacionBeansList = new ArrayList<>();
 
-		for (AsignacionModel asignacionModel : asignacionModels) {
+		for (AsignacionModel asignacionModel : asignacionModelList) {
+
 			AsignacionBean asignacionBean = new AsignacionBean();
 
-			DeudaBean deudaBeaniD = new DeudaBean(asignacionModel.getDeuda().getIdDeuda());
-//			ProcesoBean procesoBean = new AspiranteBean(asignacionModel.getIdAlumno().getAlumno().getIdAlumno());
+			asignacionBean.setIdAsignacion(asignacionModel.getIdAsignacion());
+			asignacionBean.setIdAlumno(asignacionModel.getIdAlumno().getIdProceso());
+			asignacionBean.setDeudaId(asignacionModel.getDeuda().getIdDeuda());
+			asignacionBean.setFechaAsignacion(asignacionModel.getFechaAsignacion());
+			asignacionBean.setEmpresa(asignacionModel.getEmpresa());
+			asignacionBean.setSueldo(asignacionModel.getSueldo());
 
-			asignacionBean.setIdAsignacion(0);
-			asignacionBean.setEmpresa(null);
-			asignacionBean.setFechaAsignacion(null);
-			asignacionBean.setSueldo(null);
-			asignacionBean.setDeuda(deudaBeaniD);
-			asignacionBean.setIdAlumno(null);
-
-			asignacionBeans.add(asignacionBean);
-
+			asignacionBeansList.add(asignacionBean);
 		}
 
-		return asignacionBeans;
+		return asignacionBeansList;
 	}
 
 	@Override
 	public Boolean updateAsignacion(AsignacionBean asignacionBean) {
-		// TODO Auto-generated method stub
-		return null;
+
+		AsignacionModel asignacionModel = this.asignacionRepository.findById(asignacionBean.getIdAsignacion())
+				.orElseThrow();
+
+		asignacionModel.setIdAlumno(new ProcesoModel(asignacionBean.getIdAlumno()));
+		asignacionModel.setEmpresa(asignacionBean.getEmpresa());
+		asignacionModel.setFechaAsignacion(asignacionBean.getFechaAsignacion());
+		asignacionModel.setSueldo(asignacionBean.getSueldo());
+		asignacionModel.setDeuda(new DeudaModel(asignacionBean.getDeudaId()));
+
+		this.asignacionRepository.save(asignacionModel);
+
+		return true;
 	}
 
 	@Override
