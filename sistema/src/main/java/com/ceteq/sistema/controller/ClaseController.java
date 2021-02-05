@@ -43,9 +43,8 @@ public class ClaseController {
 		return new ResponseEntity<List<ClaseBean>>(this.claseService.getAllClase(), HttpStatus.OK);
 	}
 	
-	@DeleteMapping("delete/{idProceso}")
+	@DeleteMapping("/delete/{idClase}")
 	public ResponseEntity<Boolean> deleteClase(@PathVariable int idClase){
 		return new ResponseEntity<Boolean>(this.claseService.deleteClase(idClase), HttpStatus.OK);
 	}
-	
 }

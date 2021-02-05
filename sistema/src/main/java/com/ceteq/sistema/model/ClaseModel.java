@@ -65,6 +65,10 @@ public class ClaseModel implements Serializable {
 	public ClaseModel(int idClase) {
 		this.idClase = idClase;
 	}
+	
+	public ClaseModel(int id) {
+		this.idClase = id;
+	}
 
 	public int getIdClase() {
 		return idClase;
@@ -99,7 +103,7 @@ public class ClaseModel implements Serializable {
 	}
 
 	public InstructorModel getInstructor() {
-		return instructor;
+		return this.instructor;
 	}
 
 	public void setInstructor(InstructorModel instructor) {
@@ -107,7 +111,7 @@ public class ClaseModel implements Serializable {
 	}
 
 	public ProcesoModel getProceso() {
-		return proceso;
+		return this.proceso;
 	}
 
 	public void setProceso(ProcesoModel proceso) {

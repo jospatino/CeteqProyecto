@@ -31,7 +31,6 @@ public class ProcesoBean implements Serializable {
 
 	public ProcesoBean(int idProceso, Short estatus, String descripcion, Date fechaAlta, Date fechaFin, int clase,
 			int instructor, int alumno) {
-
 		this.idProceso = idProceso;
 		this.estatus = estatus;
 		this.descripcion = descripcion;
