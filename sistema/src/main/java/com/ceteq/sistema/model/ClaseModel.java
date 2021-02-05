@@ -65,10 +65,6 @@ public class ClaseModel implements Serializable {
 	public ClaseModel(int idClase) {
 		this.idClase = idClase;
 	}
-	
-	public ClaseModel(int id) {
-		this.idClase = id;
-	}
 
 	public int getIdClase() {
 		return idClase;
