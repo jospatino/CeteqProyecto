@@ -60,7 +60,10 @@ public class ClaseModel implements Serializable {
 	}
 
 	public ClaseModel() {
-		super();
+	}
+
+	public ClaseModel(int idClase) {
+		this.idClase = idClase;
 	}
 
 	public int getIdClase() {

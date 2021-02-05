@@ -7,7 +7,11 @@ public class InstructorBean implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -3701313633844842465L;
+	private static final long serialVersionUID = 4877127589487249950L;
+
+	/**
+	 * 
+	 */
 
 	private int idInstructor;
 
@@ -19,10 +23,9 @@ public class InstructorBean implements Serializable {
 
 	private int edad;
 
-	private ClaseBean clase;
+	private Integer clase;
 
-	public InstructorBean(int idInstructor, String nombre, String apP, String apM, int edad, ClaseBean clase) {
-		super();
+	public InstructorBean(int idInstructor, String nombre, String apP, String apM, int edad, Integer clase) {
 		this.idInstructor = idInstructor;
 		this.nombre = nombre;
 		ApP = apP;
@@ -32,6 +35,11 @@ public class InstructorBean implements Serializable {
 	}
 
 	public InstructorBean() {
+	}
+
+	public InstructorBean(int idInstructor) {
+		super();
+		this.idInstructor = idInstructor;
 	}
 
 	public int getIdInstructor() {
@@ -74,18 +82,12 @@ public class InstructorBean implements Serializable {
 		this.edad = edad;
 	}
 
-	public ClaseBean getClase() {
+	public Integer getClase() {
 		return clase;
 	}
 
-	public void setClase(ClaseBean clase) {
+	public void setClase(Integer clase) {
 		this.clase = clase;
-	}
-
-	@Override
-	public String toString() {
-		return "InstructorModel [idInstructor=" + idInstructor + ", nombre=" + nombre + ", ApP=" + ApP + ", ApM=" + ApM
-				+ ", edad=" + edad + ", clase=" + clase + "]";
 	}
 
 }

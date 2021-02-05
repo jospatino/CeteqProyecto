@@ -42,13 +42,16 @@ public class InstructorModel implements Serializable {
 	private ClaseModel clase;
 
 	public InstructorModel(int idInstructor, String nombre, String apP, String apM, int edad, ClaseModel clase) {
-		super();
 		this.idInstructor = idInstructor;
 		this.nombre = nombre;
 		ApP = apP;
 		ApM = apM;
 		this.edad = edad;
 		this.clase = clase;
+	}
+
+	public InstructorModel(int idInstructor) {
+		this.idInstructor = idInstructor;
 	}
 
 	public InstructorModel() {
@@ -100,12 +103,6 @@ public class InstructorModel implements Serializable {
 
 	public void setClase(ClaseModel clase) {
 		this.clase = clase;
-	}
-
-	@Override
-	public String toString() {
-		return "InstructorModel [idInstructor=" + idInstructor + ", nombre=" + nombre + ", ApP=" + ApP + ", ApM=" + ApM
-				+ ", edad=" + edad + ", clase=" + clase + "]";
 	}
 
 }
