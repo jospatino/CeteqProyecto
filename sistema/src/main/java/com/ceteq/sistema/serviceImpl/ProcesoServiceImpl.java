@@ -85,13 +85,13 @@ public class ProcesoServiceImpl implements ProcesoService{
 	public List<ProcesoBean> getAllProceso() {
 		List<ProcesoModel> procesoList = this.procesoRepo.findAll();
 		List<ProcesoBean> procesoBeanList = new ArrayList<>();
-		for(int i=0 ; i<procesoList.size(); i++) {
+		for(ProcesoModel procesoM : procesoList) {
 			ProcesoBean procesoBean = new ProcesoBean();
-			procesoBean.setIdProceso(procesoList.get(i).getIdProceso());
-			procesoBean.setDescripcion(procesoList.get(i).getDescripcion());
-			procesoBean.setEstatus(procesoList.get(i).getEstatus());
-			procesoBean.setFechaAlta(procesoList.get(i).getFechaAlta());
-			procesoBean.setFechaFin(procesoList.get(i).getFechaFin());
+			procesoBean.setIdProceso(procesoM.getIdProceso());
+			procesoBean.setDescripcion(procesoM.getDescripcion());
+			procesoBean.setEstatus(procesoM.getEstatus());
+			procesoBean.setFechaAlta(procesoM.getFechaAlta());
+			procesoBean.setFechaFin(procesoM.getFechaFin());
 			procesoBeanList.add(procesoBean);
 		}
 		return procesoBeanList;

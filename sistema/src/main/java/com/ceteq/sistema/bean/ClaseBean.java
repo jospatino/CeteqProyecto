@@ -19,12 +19,12 @@ public class ClaseBean implements Serializable {
 
 	private Date fechaFin;
 
-	private InstructorBean instructor;
+	private int instructor;
 
-	private ProcesoBean proceso;
+	private int proceso;
 
-	public ClaseBean(int idClase, String nombreClase, Date fechaInicio, Date fechaFin, InstructorBean instructor,
-			ProcesoBean proceso) {
+	public ClaseBean(int idClase, String nombreClase, Date fechaInicio, Date fechaFin, int instructor,
+			int proceso) {
 		super();
 		this.idClase = idClase;
 		this.nombreClase = nombreClase;
@@ -70,19 +70,19 @@ public class ClaseBean implements Serializable {
 		this.fechaFin = fechaFin;
 	}
 
-	public InstructorBean getInstructor() {
+	public int getInstructor() {
 		return instructor;
 	}
 
-	public void setInstructor(InstructorBean instructor) {
+	public void setInstructor(int instructor) {
 		this.instructor = instructor;
 	}
 
-	public ProcesoBean getProceso() {
+	public int getProceso() {
 		return proceso;
 	}
 
-	public void setProceso(ProcesoBean proceso) {
+	public void setProceso(int proceso) {
 		this.proceso = proceso;
 	}
 
