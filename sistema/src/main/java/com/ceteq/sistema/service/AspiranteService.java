@@ -4,15 +4,22 @@ import java.util.List;
 
 import com.ceteq.sistema.model.AspiranteModel;
 
+import com.ceteq.sistema.bean.AspiranteBean;
+
+
 public interface AspiranteService {
 
-	public List<AspiranteModel> findAll();
+	 public List<?> findAspiranteDeuda(int idAspirante);
 
-	public AspiranteModel findById(int id);
-
-	public void save(AspiranteModel aspirante);
+	
 
 	public void deleteById(int id);
+
+    public List<AspiranteBean> findAll();
+
+    public AspiranteBean findById(int id); 
+
+    public boolean save(AspiranteBean aspirante);
 
 	public int countAll();
 

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ceteq.sistema.bean.AspiranteBean;
 import com.ceteq.sistema.model.AspiranteModel;
 
 @Controller
@@ -45,16 +46,19 @@ public class AspiranteController{
     }
 
     @PostMapping
-    public ResponseEntity<?> addAspirante(@RequestBody AspiranteModel asp){
+    public ResponseEntity<?> addAspirante(@RequestBody AspiranteBean asp){
         asp.setIdAlumno(0);
-        aspirante.save(asp);
-        return new ResponseEntity<>(true, HttpStatus.OK);
+        return new ResponseEntity<>(aspirante.save(asp), HttpStatus.OK);
     }
 
     @PutMapping
-    public ResponseEntity<?> updateAspirante(@RequestBody AspiranteModel asp){
-        aspirante.save(asp);
-        return new ResponseEntity<>(asp, HttpStatus.OK);
+    public ResponseEntity<?> updateAspirante(@RequestBody AspiranteBean asp){
+        return new ResponseEntity<>(aspirante.save(asp), HttpStatus.OK);
+    }
+
+    @GetMapping("/deuda/{aspiranteId}")
+    public ResponseEntity<?> aspiranteDeuda(@PathVariable int aspiranteId){
+        return new ResponseEntity<>(aspirante.findAspiranteDeuda(aspiranteId), HttpStatus.OK);
     }
 
 }

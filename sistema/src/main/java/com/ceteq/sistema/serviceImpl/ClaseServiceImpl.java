@@ -85,5 +85,12 @@ public class ClaseServiceImpl implements ClaseService {
 		this.claseRepo.delete(clase);
 		return true;
 	}
+	
+	@Override
+	public String numeroClases() {
+		int numero = this.claseRepo.findNumeroClases();
+		return "Hay " + numero + " clases en total";
+	}
+
 
 }
