@@ -89,9 +89,9 @@ public class ClaseServiceImpl implements ClaseService{
 	}
 	
 	@Override
-	public int numeroClases() {
+	public String numeroClases() {
 		int numero = this.claseRepo.findNumeroClases();
-		return numero;
+		return "Hay " + numero + " clases en total";
 	}
 	
 

@@ -44,8 +44,8 @@ public class ClaseController {
 	}
 	
 	@GetMapping("/clasesTotales")
-	public ResponseEntity<Integer> numeroClases(){
-		return new ResponseEntity<Integer>(this.claseService.numeroClases(), HttpStatus.OK);
+	public ResponseEntity<String> numeroClases(){
+		return new ResponseEntity<String>(this.claseService.numeroClases(), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/delete/{idClase}")
