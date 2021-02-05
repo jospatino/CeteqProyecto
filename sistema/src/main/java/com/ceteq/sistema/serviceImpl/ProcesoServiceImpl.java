@@ -8,9 +8,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ceteq.sistema.bean.AspiranteBean;
-import com.ceteq.sistema.bean.ClaseBean;
-import com.ceteq.sistema.bean.InstructorBean;
 import com.ceteq.sistema.bean.ProcesoBean;
 import com.ceteq.sistema.model.AspiranteModel;
 import com.ceteq.sistema.model.ClaseModel;
@@ -21,28 +18,28 @@ import com.ceteq.sistema.service.ProcesoService;
 
 @Service
 @Transactional
-public class ProcesoServiceImpl implements ProcesoService{
+public class ProcesoServiceImpl implements ProcesoService {
 	@Autowired
 	private ProcesoRepository procesoRepo;
-	
+
 	@Override
 	public boolean crearProceso(ProcesoBean procesoBean) {
-	ProcesoModel proceso = new ProcesoModel();
-	AspiranteModel aspirante = new AspiranteModel();
-	ClaseModel claseM = new ClaseModel();
-	InstructorModel instructor = new InstructorModel();
-	claseM.setIdClase(procesoBean.getClase());
-	instructor.setIdInstructor(procesoBean.getInstructor());
-	aspirante.setIdAlumno(procesoBean.getAlumno());
-	proceso.setEstatus(procesoBean.getEstatus());
-	proceso.setDescripcion(procesoBean.getDescripcion());
-	proceso.setFechaAlta(procesoBean.getFechaAlta());
-	proceso.setFechaFin(procesoBean.getFechaFin());
-	proceso.setClase(claseM);
-	proceso.setInstructor(instructor);
-	proceso.setAlumno(aspirante);
-	this.procesoRepo.save(proceso);
-	return true;
+		ProcesoModel proceso = new ProcesoModel();
+		AspiranteModel aspirante = new AspiranteModel();
+		ClaseModel claseM = new ClaseModel();
+		InstructorModel instructor = new InstructorModel();
+		claseM.setIdClase(procesoBean.getClase());
+		instructor.setIdInstructor(procesoBean.getInstructor());
+		aspirante.setIdAlumno(procesoBean.getAlumno());
+		proceso.setEstatus(procesoBean.getEstatus());
+		proceso.setDescripcion(procesoBean.getDescripcion());
+		proceso.setFechaAlta(procesoBean.getFechaAlta());
+		proceso.setFechaFin(procesoBean.getFechaFin());
+		proceso.setClase(claseM);
+		proceso.setInstructor(instructor);
+		proceso.setAlumno(aspirante);
+		this.procesoRepo.save(proceso);
+		return true;
 	}
 
 	@Override
@@ -74,18 +71,19 @@ public class ProcesoServiceImpl implements ProcesoService{
 		procesoBean.setEstatus(proceso.getEstatus());
 		procesoBean.setFechaAlta(proceso.getFechaAlta());
 		procesoBean.setFechaFin(proceso.getFechaFin());
-		/*procesoBean.setAlumno(proceso.getAlumno().getIdAlumno());
-		procesoBean.setClase(proceso.getClase().getIdClase());
-		procesoBean.setInstructor(proceso.getInstructor().getIdInstructor());*/
+		/*
+		 * procesoBean.setAlumno(proceso.getAlumno().getIdAlumno());
+		 * procesoBean.setClase(proceso.getClase().getIdClase());
+		 * procesoBean.setInstructor(proceso.getInstructor().getIdInstructor());
+		 */
 		return procesoBean;
 	}
-
 
 	@Override
 	public List<ProcesoBean> getAllProceso() {
 		List<ProcesoModel> procesoList = this.procesoRepo.findAll();
 		List<ProcesoBean> procesoBeanList = new ArrayList<>();
-		for(ProcesoModel procesoM : procesoList) {
+		for (ProcesoModel procesoM : procesoList) {
 			ProcesoBean procesoBean = new ProcesoBean();
 			procesoBean.setIdProceso(procesoM.getIdProceso());
 			procesoBean.setDescripcion(procesoM.getDescripcion());

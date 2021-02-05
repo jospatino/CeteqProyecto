@@ -9,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ceteq.sistema.bean.ClaseBean;
-import com.ceteq.sistema.bean.InstructorBean;
-import com.ceteq.sistema.bean.ProcesoBean;
 import com.ceteq.sistema.model.ClaseModel;
 import com.ceteq.sistema.model.InstructorModel;
 import com.ceteq.sistema.model.ProcesoModel;
@@ -19,7 +17,7 @@ import com.ceteq.sistema.service.ClaseService;
 
 @Service
 @Transactional
-public class ClaseServiceImpl implements ClaseService{
+public class ClaseServiceImpl implements ClaseService {
 	@Autowired
 	private ClaseRepository claseRepo;
 
@@ -70,7 +68,7 @@ public class ClaseServiceImpl implements ClaseService{
 	public List<ClaseBean> getAllClase() {
 		List<ClaseModel> claseModelList = this.claseRepo.findAll();
 		List<ClaseBean> claseBeanList = new ArrayList<>();
-		for(ClaseModel claseModel : claseModelList) {
+		for (ClaseModel claseModel : claseModelList) {
 			ClaseBean claseBean = new ClaseBean();
 			claseBean.setIdClase(claseModel.getIdClase());
 			claseBean.setNombreClase(claseModel.getNombreClase());
@@ -87,6 +85,5 @@ public class ClaseServiceImpl implements ClaseService{
 		this.claseRepo.delete(clase);
 		return true;
 	}
-	
 
 }
