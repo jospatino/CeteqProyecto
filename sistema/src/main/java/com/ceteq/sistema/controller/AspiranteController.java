@@ -56,5 +56,10 @@ public class AspiranteController{
         return new ResponseEntity<>(aspirante.save(asp), HttpStatus.OK);
     }
 
+    @GetMapping("/deuda/{aspiranteId}")
+    public ResponseEntity<?> aspiranteDeuda(@PathVariable int aspiranteId){
+        return new ResponseEntity<>(aspirante.findAspiranteDeuda(aspiranteId), HttpStatus.OK);
+    }
+
 }
 
