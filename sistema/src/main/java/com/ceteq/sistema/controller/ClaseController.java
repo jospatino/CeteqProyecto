@@ -43,6 +43,11 @@ public class ClaseController {
 		return new ResponseEntity<List<ClaseBean>>(this.claseService.getAllClase(), HttpStatus.OK);
 	}
 	
+	@GetMapping("/clasesTotales")
+	public ResponseEntity<Integer> numeroClases(){
+		return new ResponseEntity<Integer>(this.claseService.numeroClases(), HttpStatus.OK);
+	}
+	
 	@DeleteMapping("/delete/{idClase}")
 	public ResponseEntity<Boolean> deleteClase(@PathVariable int idClase){
 		return new ResponseEntity<Boolean>(this.claseService.deleteClase(idClase), HttpStatus.OK);

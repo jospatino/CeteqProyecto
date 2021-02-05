@@ -10,4 +10,5 @@ public interface ClaseService {
 	public ClaseBean getClase(int idClase);
 	public List<ClaseBean> getAllClase();
 	public boolean deleteClase(int idClase);
+	public int numeroClases();
 }

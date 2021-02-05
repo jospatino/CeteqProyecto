@@ -88,5 +88,11 @@ public class ClaseServiceImpl implements ClaseService{
 		return true;
 	}
 	
+	@Override
+	public int numeroClases() {
+		int numero = this.claseRepo.findNumeroClases();
+		return numero;
+	}
+	
 
 }
