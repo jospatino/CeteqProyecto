@@ -6,7 +6,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import com.ceteq.sistema.bean.AspiranteBean;
-import com.ceteq.sistema.bean.AspiranteDeudaBean;
+import com.ceteq.sistema.interface_projection.AspiranteDeudaProjection;
 import com.ceteq.sistema.model.AspiranteModel;
 import com.ceteq.sistema.repository.AspiranteRepository;
 import com.ceteq.sistema.service.AspiranteService;
@@ -72,10 +72,6 @@ public class AspiranteImpl implements AspiranteService{
         return aspB;
     }
 
-    public List<?> findAspiranteDeuda(int idAspirante){
-        return aspiranteRep.findAspiranteDeuda(idAspirante);
-    }
-
     @Override
     public boolean save(AspiranteBean aspiranteB) {
         AspiranteModel aspM = new AspiranteModel(
@@ -94,6 +90,12 @@ public class AspiranteImpl implements AspiranteService{
 
         aspiranteRep.save(aspM);
         return true;
-    } 
+    }
+
+    @Override
+    public AspiranteDeudaProjection findAspiranteDeuda(int idAspirante) {
+        AspiranteDeudaProjection aspiranteDeudaProjection = aspiranteRep.findAspiranteDeuda(idAspirante);
+        return aspiranteDeudaProjection;
+    }
 
 } 

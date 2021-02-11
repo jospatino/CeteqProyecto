@@ -3,6 +3,8 @@ package com.ceteq.sistema.service;
 import java.util.List;
 
 import com.ceteq.sistema.bean.AspiranteBean;
+import com.ceteq.sistema.bean.AspiranteDeudaBean;
+import com.ceteq.sistema.interface_projection.AspiranteDeudaProjection;
 
 
 public interface AspiranteService{
@@ -16,6 +18,8 @@ public interface AspiranteService{
     public void deleteById(int id);
 
     public int countAll();
+
+    public AspiranteDeudaProjection findAspiranteDeuda(int idAspirante);
 
 }
 

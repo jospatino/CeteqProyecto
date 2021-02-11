@@ -1,12 +1,11 @@
 package com.ceteq.sistema.repository;
 
-import java.util.List;
-
-import com.ceteq.sistema.bean.AspiranteDeudaBean;
+import com.ceteq.sistema.interface_projection.AspiranteDeudaProjection;
 import com.ceteq.sistema.model.AspiranteModel;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,9 +14,23 @@ public interface AspiranteRepository extends JpaRepository<AspiranteModel, Integ
     
     @Transactional
     @Query(
-        value="select a.id_alumno, a.nombre, a.apellido_paterno, a.apellido_materno, d.deuda_total from tb_aspirantes a, tb_deudas d where d.id_alumno = a.id_alumno and a.id_alumno = :aspiranteId",
+        value = 
+         "   Select "+
+         "       a.id_alumno as idAlumno,"+
+         "       a.nombre,"+
+         "       a.apellido_paterno as apellidoPaterno,"+
+         "       a.apellido_materno as apellidoMaterno,"+
+         "       d.deuda_total as deuda"+
+         "   from"+
+         "       tb_asignaciones asign,"+
+         "       tb_deudas d,"+
+         "       tb_aspirantes a"+
+         "   where"+
+         "       asign.id_alumno = a.id_alumno AND"+
+         "       asign.id_alumno = d.id_alumno AND"+
+         "       asign.id_alumno = :aspitante_id",
         nativeQuery = true
     )
-    List<?> findAspiranteDeuda(int aspiranteId);
+    AspiranteDeudaProjection findAspiranteDeuda(@Param("aspitante_id") int aspiranteId);
 
 }

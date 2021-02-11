@@ -1,25 +1,36 @@
-package com.ceteq.sistema.bean;
+package com.ceteq.sistema.model.jparepo;
 
 import java.io.Serializable;
 
-public class AspiranteDeudaBean implements Serializable{
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class AspiranteDeudaQuery implements Serializable{
 
 	private static final long serialVersionUID = -8080246570251530489L;
 
+    @Id
+    @Column(name = "id_alumno")
     private Integer id_alumno;
 
+    @Column(name = "nombre")
     private String nombre;
 
+    @Column(name = "apellido_paterno")
     private String apellido_paterno;
 
+    @Column(name = "apellido_materno")
     private String apellido_materno;
 
+    @Column(name = "deuda_total")
     private Double deuda_total;
 
-    public AspiranteDeudaBean() {
+    public AspiranteDeudaQuery() {
     }
 
-    public AspiranteDeudaBean(Integer id_alumno, String nombre, String apellido_paterno, String apellido_materno,
+    public AspiranteDeudaQuery(Integer id_alumno, String nombre, String apellido_paterno, String apellido_materno,
             Double deuda_total) {
         this.id_alumno = id_alumno;
         this.nombre = nombre;
@@ -66,6 +77,12 @@ public class AspiranteDeudaBean implements Serializable{
 
     public void setDeuda_total(Double deuda_total) {
         this.deuda_total = deuda_total;
+    }
+
+    @Override
+    public String toString() {
+        return "AspiranteDeudaBean [apellido_materno=" + apellido_materno + ", apellido_paterno=" + apellido_paterno
+                + ", deuda_total=" + deuda_total + ", nombre=" + nombre + "]";
     }
 
 }
