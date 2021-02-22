@@ -13,7 +13,7 @@ public class Profesor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private Integer id;
+	private Integer idProfesor;
 	
 	@Column (name = "nombre_profesor", nullable = false, length = 80)
 	private String nombreProfesor;
@@ -28,15 +28,15 @@ public class Profesor {
 	}
 
 	public Profesor(Integer id) {
-		this.id = id;
+		this.idProfesor = id;
 	}
 
 	public Integer getId() {
-		return id;
+		return idProfesor;
 	}
 
 	public void setId(Integer id) {
-		this.id = id;
+		this.idProfesor = id;
 	}
 
 	public String getNombreProfesor() {

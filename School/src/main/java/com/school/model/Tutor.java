@@ -14,7 +14,7 @@ public class Tutor {
 	@Id
 	@GeneratedValue(strategy =GenerationType.IDENTITY )
 	@Column (name = "id")
-	private Integer id;
+	private Integer idTutor;
 	
 	@Column (name = "nombre_tutor", nullable = false, length = 80)
 	private String nombreTutor;
@@ -26,15 +26,15 @@ public class Tutor {
 	}
 
 	public Tutor(Integer id) {
-		this.id = id;
+		this.idTutor = id;
 	}
 
 	public Integer getId() {
-		return id;
+		return idTutor;
 	}
 
 	public void setId(Integer id) {
-		this.id = id;
+		this.idTutor = id;
 	}
 
 	public String getNombreTutor() {
