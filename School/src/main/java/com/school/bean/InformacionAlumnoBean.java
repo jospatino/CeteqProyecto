@@ -1,53 +1,28 @@
-package com.school.model;
+package com.school.bean;
 
-import java.io.Serializable;
+import com.school.model.Alumnos;
+import com.school.model.Kardex;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+public class InformacionAlumnoBean {
 
-@Entity
-@Table (name = "Tb_Informacion_Alumno")
-public class InformacionAlumno implements Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column (name = "id_detalle")
 	private Integer iddetalle;
 	
-	@Column(name = "semestre_alumno", nullable = false, length = 100)
 	private Integer semestre_Alumno; 
 	
-	@Column(name = "deuda_alumno", nullable = false, length = 100)
 	private double deuda_alumno;
 	
-	@Column(name = "beca_alumno", nullable = false, length = 100)
 	private boolean beca_alumno;
 	
-	@Column(name = "promedio_Alumno", nullable = false, length = 100)
 	private double promedio_Alumno;
 
-	@OneToOne
-	@JoinColumn(name = "id_kardex")
 	private Kardex idKardex;
 	
-	@OneToOne(mappedBy="iddetalle")
     private Alumnos alumnos;
 	
-	public InformacionAlumno() {
+	public InformacionAlumnoBean() {
 	}
 
-	public InformacionAlumno(Integer iddetalle) {
+	public InformacionAlumnoBean(Integer iddetalle) {
 		this.iddetalle = iddetalle;
 	}
 
@@ -98,8 +73,14 @@ public class InformacionAlumno implements Serializable{
 	public void setIdKardex(Kardex idKardex) {
 		this.idKardex = idKardex;
 	}
+
+	public Alumnos getAlumnos() {
+		return alumnos;
+	}
+
+	public void setAlumnos(Alumnos alumnos) {
+		this.alumnos = alumnos;
+	}
 	
-	
-	
-	
+
 }

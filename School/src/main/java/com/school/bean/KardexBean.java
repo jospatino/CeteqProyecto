@@ -1,41 +1,23 @@
-package com.school.model;
+package com.school.bean;
 
-import java.io.Serializable;
+import com.school.model.InformacionAlumno;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+public class KardexBean {
+	
+	
 
-@Entity
-@Table (name = "Tb_Kardex")
-public class Kardex implements Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column (name = "id_kardex")
 	private Integer idkardex;
 	
-	@Column(name = "año_kardex", nullable = false)
 	private Integer año_kardex; 
 	
-	@Column(name = "calificacion_kardex", nullable = false)
 	private double calificacion_kardex;
 	
-	@OneToOne(mappedBy="idKardex")
     private InformacionAlumno informacionalumno;
 
-	public Kardex() {
+	public KardexBean() {
 	}
 
-	public Kardex(Integer idkardex) {
+	public KardexBean(Integer idkardex) {
 		this.idkardex = idkardex;
 	}
 
@@ -70,6 +52,4 @@ public class Kardex implements Serializable{
 	public void setInformacionalumno(InformacionAlumno informacionalumno) {
 		this.informacionalumno = informacionalumno;
 	} 
-	
-	
 }
