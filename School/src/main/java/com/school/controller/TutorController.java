@@ -1,5 +1,5 @@
 package com.school.controller;
 
-public class AlumnosController {
+public class TutorController {
 
 }

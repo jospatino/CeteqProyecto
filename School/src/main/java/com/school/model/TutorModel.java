@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name = "Tb_Tutor")
-public class Tutor {
+public class TutorModel {
 	
 	@Id
 	@GeneratedValue(strategy =GenerationType.IDENTITY )
@@ -26,13 +26,13 @@ public class Tutor {
 	private String correo;
 	
 	@OneToMany(mappedBy = "tutor")
-    private List<Alumnos> alumnoList;
+    private List<AlumnoModel> alumnoList;
 	
 
-	public Tutor() {
+	public TutorModel() {
 	}
 
-	public Tutor(Integer id) {
+	public TutorModel(Integer id) {
 		this.idTutor = id;
 	}
 

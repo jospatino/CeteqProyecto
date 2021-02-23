@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name = "Tb_Alumnos")
-public class Alumnos implements Serializable{
+public class AlumnoModel implements Serializable{
 	/**
 	 * 
 	 */
@@ -40,20 +40,20 @@ public class Alumnos implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn (name = "id_profesor", nullable = false)
-	private Profesor profesor;
+	private ProfesorModel profesor;
 	
 	@ManyToOne
 	@JoinColumn (name = "id_tutor", nullable = false)
-	private Tutor tutor;
+	private TutorModel tutor;
 
 	@OneToOne
 	@JoinColumn(name = "id_detalle")
-	private InformacionAlumno iddetalle;
+	private InformacionAlumnoModel iddetalle;
 	
-	public Alumnos() {
+	public AlumnoModel() {
 	}
 
-	public Alumnos(Integer id) {
+	public AlumnoModel(Integer id) {
 		this.idAlumno = id;
 	}
 

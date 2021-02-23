@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name = "Tb_Informacion_Alumno")
-public class InformacionAlumno implements Serializable{
+public class InformacionAlumnoModel implements Serializable{
 	/**
 	 * 
 	 */
@@ -39,15 +39,15 @@ public class InformacionAlumno implements Serializable{
 
 	@OneToOne
 	@JoinColumn(name = "id_kardex")
-	private Kardex idKardex;
+	private KardexModel idKardex;
 	
 	@OneToOne(mappedBy="iddetalle")
-    private Alumnos alumnos;
+    private AlumnoModel alumnos;
 	
-	public InformacionAlumno() {
+	public InformacionAlumnoModel() {
 	}
 
-	public InformacionAlumno(Integer iddetalle) {
+	public InformacionAlumnoModel(Integer iddetalle) {
 		this.iddetalle = iddetalle;
 	}
 
@@ -91,11 +91,11 @@ public class InformacionAlumno implements Serializable{
 		this.promedio_Alumno = promedio_Alumno;
 	}
 
-	public Kardex getIdKardex() {
+	public KardexModel getIdKardex() {
 		return idKardex;
 	}
 
-	public void setIdKardex(Kardex idKardex) {
+	public void setIdKardex(KardexModel idKardex) {
 		this.idKardex = idKardex;
 	}
 	

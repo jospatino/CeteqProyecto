@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name = "Tb_Profesor")
-public class Profesor {
+public class ProfesorModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_Profesor")
@@ -30,13 +30,13 @@ public class Profesor {
 
 	
 	@OneToMany(mappedBy = "profesor")
-    private List<Alumnos> alumnoList;
+    private List<AlumnoModel> alumnoList;
 	
 	
-	public Profesor() {
+	public ProfesorModel() {
 	}
 
-	public Profesor(Integer id) {
+	public ProfesorModel(Integer id) {
 		this.idProfesor = id;
 	}
 

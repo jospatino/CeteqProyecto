@@ -2,7 +2,7 @@ package com.school.bean;
 
 import java.util.List;
 
-import com.school.model.Alumnos;
+import com.school.model.AlumnoModel;
 
 public class TutorBean {
 
@@ -13,7 +13,7 @@ public class TutorBean {
 	
 	private String correo;
 	
-    private List<Alumnos> alumnoList;
+    private List<AlumnoModel> alumnoList;
 	
 
 	public TutorBean() {
@@ -47,11 +47,11 @@ public class TutorBean {
 		this.correo = correo;
 	}
 
-	public List<Alumnos> getAlumnoList() {
+	public List<AlumnoModel> getAlumnoList() {
 		return alumnoList;
 	}
 
-	public void setAlumnoList(List<Alumnos> alumnoList) {
+	public void setAlumnoList(List<AlumnoModel> alumnoList) {
 		this.alumnoList = alumnoList;
 	}
 	

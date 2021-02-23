@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name = "Tb_Kardex")
-public class Kardex implements Serializable{
+public class KardexModel implements Serializable{
 	/**
 	 * 
 	 */
@@ -30,12 +30,12 @@ public class Kardex implements Serializable{
 	private double calificacion_kardex;
 	
 	@OneToOne(mappedBy="idKardex")
-    private InformacionAlumno informacionalumno;
+    private InformacionAlumnoModel informacionalumno;
 
-	public Kardex() {
+	public KardexModel() {
 	}
 
-	public Kardex(Integer idkardex) {
+	public KardexModel(Integer idkardex) {
 		this.idkardex = idkardex;
 	}
 
@@ -63,11 +63,11 @@ public class Kardex implements Serializable{
 		this.calificacion_kardex = calificacion_kardex;
 	}
 
-	public InformacionAlumno getInformacionalumno() {
+	public InformacionAlumnoModel getInformacionalumno() {
 		return informacionalumno;
 	}
 
-	public void setInformacionalumno(InformacionAlumno informacionalumno) {
+	public void setInformacionalumno(InformacionAlumnoModel informacionalumno) {
 		this.informacionalumno = informacionalumno;
 	} 
 	

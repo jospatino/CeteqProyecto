@@ -1,6 +1,6 @@
 package com.school.bean;
 
-public class AlumnosBean {
+public class AlumnoBean {
     private Integer idAlumno;
 	
 	private String nombreAlumno;
@@ -11,10 +11,10 @@ public class AlumnosBean {
 	
 	private Integer edadAlumno;
 
-	public AlumnosBean() {
+	public AlumnoBean() {
 	}
 
-	public AlumnosBean(Integer id) {
+	public AlumnoBean(Integer id) {
 		this.idAlumno = id;
 	}
 

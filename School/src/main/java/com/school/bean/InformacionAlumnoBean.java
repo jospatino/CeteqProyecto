@@ -1,7 +1,7 @@
 package com.school.bean;
 
-import com.school.model.Alumnos;
-import com.school.model.Kardex;
+import com.school.model.AlumnoModel;
+import com.school.model.KardexModel;
 
 public class InformacionAlumnoBean {
 
@@ -15,9 +15,9 @@ public class InformacionAlumnoBean {
 	
 	private double promedio_Alumno;
 
-	private Kardex idKardex;
+	private KardexModel idKardex;
 	
-    private Alumnos alumnos;
+    private AlumnoModel alumnos;
 	
 	public InformacionAlumnoBean() {
 	}
@@ -66,19 +66,19 @@ public class InformacionAlumnoBean {
 		this.promedio_Alumno = promedio_Alumno;
 	}
 
-	public Kardex getIdKardex() {
+	public KardexModel getIdKardex() {
 		return idKardex;
 	}
 
-	public void setIdKardex(Kardex idKardex) {
+	public void setIdKardex(KardexModel idKardex) {
 		this.idKardex = idKardex;
 	}
 
-	public Alumnos getAlumnos() {
+	public AlumnoModel getAlumnos() {
 		return alumnos;
 	}
 
-	public void setAlumnos(Alumnos alumnos) {
+	public void setAlumnos(AlumnoModel alumnos) {
 		this.alumnos = alumnos;
 	}
 	
