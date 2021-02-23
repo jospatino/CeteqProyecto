@@ -1,7 +1,7 @@
 package com.school.bean;
 
 public class AlumnosBean {
-private Integer id;
+    private Integer idAlumno;
 	
 	private String nombreAlumno;
 	
@@ -15,15 +15,15 @@ private Integer id;
 	}
 
 	public AlumnosBean(Integer id) {
-		this.id = id;
+		this.idAlumno = id;
 	}
 
 	public Integer getId() {
-		return id;
+		return idAlumno;
 	}
 
 	public void setId(Integer id) {
-		this.id = id;
+		this.idAlumno = id;
 	}
 
 	public String getNombreAlumno() {

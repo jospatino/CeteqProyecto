@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class Profesor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "id_Profesor")
 	private Integer idProfesor;
 	
 	@Column (name = "nombre_profesor", nullable = false, length = 80)
