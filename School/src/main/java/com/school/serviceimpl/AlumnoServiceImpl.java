@@ -61,7 +61,7 @@ public class AlumnoServiceImpl implements AlumnoService {
 
 	@Override
 	public AlumnoBean findIdAlumno(Integer idAlumno) {
-		AlumnoModel alumno = alumnoRepo.findById(idAlumno).orElseThrow();
+		AlumnoModel alumno = alumnoRepo.findById(idAlumno).orElseThrow(null);
 		AlumnoBean alumnoBean = new AlumnoBean();
 		
 		alumnoBean.setNombreAlumno(alumno.getNombreAlumno());
@@ -79,7 +79,7 @@ public class AlumnoServiceImpl implements AlumnoService {
 
 	@Override
 	public Boolean updateAlumno(AlumnoBean alumnoBean) {
-		AlumnoModel alumnoById = alumnoRepo.findById(alumnoBean.getId()).orElseThrow();
+		AlumnoModel alumnoById = alumnoRepo.findById(alumnoBean.getId()).orElseThrow(null);
 		
 		alumnoById.setNombreAlumno(alumnoBean.getNombreAlumno());
 		alumnoById.setApPaterno(alumnoBean.getApPaterno());
@@ -96,7 +96,7 @@ public class AlumnoServiceImpl implements AlumnoService {
 
 	@Override
 	public Boolean deleteById(Integer idAlumno) {
-		AlumnoModel alumnoById = alumnoRepo.findById(idAlumno).orElseThrow();
+		AlumnoModel alumnoById = alumnoRepo.findById(idAlumno).orElseThrow(null);
 		alumnoRepo.delete(alumnoById);
 
 		return true;
