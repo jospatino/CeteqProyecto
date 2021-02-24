@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.school.bean.KardexBean;
@@ -16,7 +17,7 @@ import com.school.service.KardexService;
 @Transactional
 public class KardexServiceImpl implements KardexService {
 	
-	
+	@Autowired
 	private KardexRepository kardexRepository;
 
 	@Override
@@ -31,7 +32,7 @@ public class KardexServiceImpl implements KardexService {
 
 	@Override
 	public List<KardexBean> findKardex() {
-		List<KardexModel> kardexModelList = this.kardexRepository.findAll();
+		List<KardexModel> kardexModelList = kardexRepository.findAll();
 		List<KardexBean> kardexBeanList = new ArrayList<KardexBean>();
 		
 		for(KardexModel kardexModel : kardexModelList) {
@@ -47,7 +48,7 @@ public class KardexServiceImpl implements KardexService {
 
 	@Override
 	public KardexBean findIdKardex(Integer idKardex) {
-		KardexModel kardexModel = kardexRepository.findById(idKardex).orElseThrow();
+		KardexModel kardexModel = kardexRepository.findById(idKardex).orElseThrow(null);
 		KardexBean kardexBean = new KardexBean();
 		
 		kardexBean.setAño_kardex(kardexModel.getAño_kardex());
@@ -71,7 +72,7 @@ public class KardexServiceImpl implements KardexService {
 
 	@Override
 	public Boolean deleteByIdKardex(Integer idKardex) {
-		KardexModel kardexModel = kardexRepository.findById(idKardex).orElseThrow();
+		KardexModel kardexModel = kardexRepository.findById(idKardex).orElseThrow(null);
 		kardexRepository.delete(kardexModel);
 		return true;
 	}
