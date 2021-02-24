@@ -75,7 +75,7 @@ public class ProfeServiceImpl implements ProfesorService {
 
 	
 	@Override
-	public boolean uptdateProfesor(ProfesorBean UpdateProfesor) {
+	public boolean updateProfesor(ProfesorBean UpdateProfesor) {
 		
 		ProfesorModel profesor = profeRepo.findById(UpdateProfesor.getId()).orElseThrow(null);
 		
