@@ -60,7 +60,7 @@ public class KardexServiceImpl implements KardexService {
 
 	@Override
 	public Boolean updateKardex(KardexBean kardexBean) {
-        KardexModel kardexModel = this.kardexRepository.findById(kardexBean.getIdkardex()).orElseThrow();
+        KardexModel kardexModel = this.kardexRepository.findById(kardexBean.getIdkardex()).orElseThrow(null);
 		
         kardexModel.setIdkardex(kardexBean.getIdkardex());
 		kardexModel.setAño_kardex(kardexBean.getAño_kardex());

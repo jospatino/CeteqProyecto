@@ -47,7 +47,7 @@ public class TutorServiceImpl implements TutorService {
 
 	@Override
 	public TutorBean findIdTutor(Integer idTutor) {
-		TutorModel tutorModel = tutorRepository.findById(idTutor).orElseThrow();
+		TutorModel tutorModel = tutorRepository.findById(idTutor).orElseThrow(null);
 		TutorBean tutorBean = new TutorBean();
 		
 		tutorBean.setId(tutorModel.getId());
@@ -59,7 +59,7 @@ public class TutorServiceImpl implements TutorService {
 
 	@Override
 	public Boolean updateTutor(TutorBean tutorBean) {
-		TutorModel tutorModel = this.tutorRepository.findById(tutorBean.getId()).orElseThrow();
+		TutorModel tutorModel = this.tutorRepository.findById(tutorBean.getId()).orElseThrow(null);
 		
 		tutorModel.setId(tutorBean.getId());
 		tutorModel.setNombreTutor(tutorBean.getNombreTutor());
@@ -71,7 +71,7 @@ public class TutorServiceImpl implements TutorService {
 
 	@Override
 	public Boolean deleteByIdTutor(Integer idTutor) {
-		TutorModel tutorModel = tutorRepository.findById(idTutor).orElseThrow();
+		TutorModel tutorModel = tutorRepository.findById(idTutor).orElseThrow(null);
 		tutorRepository.delete(tutorModel);
 		return true;
 	}
