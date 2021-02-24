@@ -10,8 +10,8 @@ public interface AlumnoService {
 	
 	public Integer saveAlumno (AlumnoBean alumnoBean);
 	public List<AlumnoBean> list ();
-	public AlumnoBean findIdAlumno (Integer idAlumnos);
-	public Boolean updateAlumno (AlumnoBean alumnosBean);
-	public Boolean deleteById (Integer idAlumnos);
+	public AlumnoBean findIdAlumno (Integer idAlumno);
+	public Boolean updateAlumno (AlumnoBean alumnoBean);
+	public Boolean deleteById (Integer idAlumno);
 
 }
