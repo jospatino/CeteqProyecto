@@ -23,7 +23,7 @@ import com.school.serviceimpl.AlumnoServiceImpl;
 import com.school.serviceimpl.ProfeServiceImpl;
 
 @RestController
-@RequestMapping("/Servicios")
+@RequestMapping("/Servicios3")
 public class AlumnoController {
 @Autowired
 private AlumnoServiceImpl alumnoService;
