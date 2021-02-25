@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.school.bean.AlumnoBean;
-import com.school.bean.InformacionAlumnoBean;
+import com.school.bean.AlumnoDetalleBean;
 import com.school.model.AlumnoModel;
 import com.school.repository.AlumnoRepository;
 import com.school.service.AlumnoService;
@@ -35,6 +35,7 @@ public class AlumnoServiceImpl implements AlumnoService {
 
 	@Override
 	public List<AlumnoBean> list() {
+		
 		List<AlumnoModel> alumnoList = alumnoRepo.findAll();
 		List<AlumnoBean> alumnoBeanList = new ArrayList<AlumnoBean>();
 		for(AlumnoModel alumno : alumnoList) {
@@ -47,15 +48,11 @@ public class AlumnoServiceImpl implements AlumnoService {
 			alumnoBean.setEdadAlumno(alumno.getEdadAlumno());
 			alumnoBean.setId(alumno.getId());
 			
-			alumnoBeanList.add(alumnoBean);
-			
-			
+			alumnoBeanList.add(alumnoBean);			
 			
 		}
 			
-		
-				
-		
+
 
 		return alumnoBeanList;
 	}
@@ -89,12 +86,11 @@ public class AlumnoServiceImpl implements AlumnoService {
 		
 		alumnoRepo.save(alumnoById);
 
-		
-		
-
 		return true;
 	}
 
+	
+	
 	@Override
 	public Boolean deleteById(Integer idAlumno) {
 		AlumnoModel alumnoById = alumnoRepo.findById(idAlumno).orElseThrow(null);
@@ -102,17 +98,60 @@ public class AlumnoServiceImpl implements AlumnoService {
 
 		return true;
 	}
+	
+	
 
 	@Override
 	public List<AlumnoBean> listaReprobados() {
-		// TODO Auto-generated method stub
-		return null;
+		List<AlumnoModel> alumnoList = alumnoRepo.findAll();
+		List<AlumnoBean> alumnoBeanList = new ArrayList<AlumnoBean>();
+		
+		AlumnoDetalleBean alumnoDetalleBean = new  AlumnoDetalleBean();
+		
+		if(alumnoDetalleBean.getIddetalle().getPromedio_Alumno() < 6) 
+			
+		
+		for(AlumnoModel alumno : alumnoList) {
+			
+			AlumnoBean alumnoBean = new AlumnoBean();
+			
+			alumnoBean.setNombreAlumno(alumno.getNombreAlumno());
+			alumnoBean.setApPaterno(alumno.getApPaterno());
+			alumnoBean.setApMaterno(alumno.getApMaterno());
+			alumnoBean.setEdadAlumno(alumno.getEdadAlumno());
+			alumnoBean.setId(alumno.getId());
+			
+			alumnoBeanList.add(alumnoBean);
+
+		
+		}
+		return alumnoBeanList;
 	}
 
 	@Override
-	public List<InformacionAlumnoBean> listaCalificaciones() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<AlumnoDetalleBean> listaCalificaciones() {
+		
+	
+		List<AlumnoModel> alumnoList = alumnoRepo.findAll();
+		List<AlumnoDetalleBean> alumnoDetalleBeanList = new ArrayList<AlumnoDetalleBean>();
+					
+		
+		for(AlumnoModel alumno : alumnoList) {
+			
+			AlumnoDetalleBean alumnoDetalleBean = new  AlumnoDetalleBean();
+			
+			alumnoDetalleBean.setNombreAlumno(alumno.getNombreAlumno());
+			alumnoDetalleBean.setApPaterno(alumno.getApPaterno());
+			alumnoDetalleBean.setApMaterno(alumno.getApMaterno());
+			alumnoDetalleBean.setId(alumno.getId());
+			alumnoDetalleBean.getIddetalle().getPromedio_Alumno();
+			
+		
+			alumnoDetalleBeanList.add(alumnoDetalleBean);
+		
+		
+		}
+		return alumnoDetalleBeanList; 
 	}
 
 	@Override
@@ -123,8 +162,31 @@ public class AlumnoServiceImpl implements AlumnoService {
 
 	@Override
 	public List<AlumnoBean> listaDeudores() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<AlumnoModel> alumnoList = alumnoRepo.findAll();
+		List<AlumnoBean> alumnoBeanList = new ArrayList<AlumnoBean>();
+		AlumnoDetalleBean alumnodeuda = new AlumnoDetalleBean();
+		
+		if(alumnodeuda.getIddetalle().getDeuda_alumno() > 0) {
+		
+		
+		
+		for(AlumnoModel alumno : alumnoList) {
+			
+			AlumnoBean alumnoBean = new AlumnoBean();
+			
+			alumnoBean.setNombreAlumno(alumno.getNombreAlumno());
+			alumnoBean.setApPaterno(alumno.getApPaterno());
+			alumnoBean.setApMaterno(alumno.getApMaterno());
+			alumnoBean.setEdadAlumno(alumno.getEdadAlumno());
+			alumnoBean.setId(alumno.getId());
+			
+			alumnoBeanList.add(alumnoBean);
+		}
+			
+		}
+
+		return alumnoBeanList;
 	}
 
 	@Override
@@ -147,8 +209,32 @@ public class AlumnoServiceImpl implements AlumnoService {
 
 	@Override
 	public List<AlumnoBean> listaAlumnoDerechoExamen() {
-		// TODO Auto-generated method stub
-		return null;
+		
+	
+		List<AlumnoModel> alumnoList = alumnoRepo.findAll();
+		List<AlumnoBean> alumnoBeanList = new ArrayList<AlumnoBean>();
+		
+		AlumnoDetalleBean alumnoDetalleBean = new AlumnoDetalleBean ();
+		
+		if(alumnoDetalleBean.getIddetalle().getDeuda_alumno() < 0.0 && alumnoDetalleBean.getIddetalle().getPromedio_Alumno() > 4.0 ) {
+			
+		
+		for(AlumnoModel alumno : alumnoList) {
+			
+			AlumnoBean alumnoBean = new AlumnoBean();
+			
+			alumnoBean.setNombreAlumno(alumno.getNombreAlumno());
+			alumnoBean.setApPaterno(alumno.getApPaterno());
+			alumnoBean.setApMaterno(alumno.getApMaterno());
+			alumnoBean.setEdadAlumno(alumno.getEdadAlumno());
+			alumnoBean.setId(alumno.getId());
+			
+			alumnoBeanList.add(alumnoBean);				
+			
+			
+		}
 	}
+		return alumnoBeanList;
 
+}
 }
