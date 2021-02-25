@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.school.bean.AlumnoBean;
+import com.school.bean.InformacionAlumnoBean;
 import com.school.model.AlumnoModel;
 import com.school.repository.AlumnoRepository;
 import com.school.service.AlumnoService;
@@ -100,6 +101,54 @@ public class AlumnoServiceImpl implements AlumnoService {
 		alumnoRepo.delete(alumnoById);
 
 		return true;
+	}
+
+	@Override
+	public List<AlumnoBean> listaReprobados() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<InformacionAlumnoBean> listaCalificaciones() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<AlumnoBean> listaAlumnoTutor() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<AlumnoBean> listaDeudores() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<AlumnoBean> listaAlumnoProfesor() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<AlumnoBean> listaAlumnoProfeId(Integer idProfesor) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<AlumnoBean> listaAlumnoBeca(double promedio_Alumno) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<AlumnoBean> listaAlumnoDerechoExamen() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
