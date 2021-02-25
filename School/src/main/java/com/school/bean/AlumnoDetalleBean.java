@@ -1,6 +1,8 @@
 package com.school.bean;
 
 import com.school.model.InformacionAlumnoModel;
+import com.school.model.ProfesorModel;
+import com.school.model.TutorModel;
 
 public class AlumnoDetalleBean {
 private Integer idAlumno;
@@ -16,8 +18,28 @@ private Integer idAlumno;
 	private InformacionAlumnoModel iddetalle;
 	
 	private double calificacionAlumno;
+	
+	private TutorModel tutor;
+	
+	private ProfesorModel profesor;
 
 	
+
+	public TutorModel getTutor() {
+		return tutor;
+	}
+
+	public void setTutor(TutorModel tutor) {
+		this.tutor = tutor;
+	}
+
+	public ProfesorModel getProfesor() {
+		return profesor;
+	}
+
+	public void setProfesor(ProfesorModel profesor) {
+		this.profesor = profesor;
+	}
 
 	public double getCalificacionAlumno() {
 		return calificacionAlumno;

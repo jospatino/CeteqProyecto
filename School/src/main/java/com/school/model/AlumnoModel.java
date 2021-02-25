@@ -38,6 +38,22 @@ public class AlumnoModel implements Serializable{
 	private Integer edadAlumno;
 	
 	
+	public ProfesorModel getProfesor() {
+		return profesor;
+	}
+
+	public void setProfesor(ProfesorModel profesor) {
+		this.profesor = profesor;
+	}
+
+	public TutorModel getTutor() {
+		return tutor;
+	}
+
+	public void setTutor(TutorModel tutor) {
+		this.tutor = tutor;
+	}
+
 	@ManyToOne
 	@JoinColumn (name = "id_profesor", nullable = false)
 	private ProfesorModel profesor;

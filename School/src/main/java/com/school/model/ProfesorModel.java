@@ -71,6 +71,22 @@ public class ProfesorModel {
 	public void setApmProfesor(String apmProfesor) {
 		this.apmProfesor = apmProfesor;
 	}
+
+	public Integer getIdProfesor() {
+		return idProfesor;
+	}
+
+	public void setIdProfesor(Integer idProfesor) {
+		this.idProfesor = idProfesor;
+	}
+
+	public List<AlumnoModel> getAlumnoList() {
+		return alumnoList;
+	}
+
+	public void setAlumnoList(List<AlumnoModel> alumnoList) {
+		this.alumnoList = alumnoList;
+	}
 	
 	
 	

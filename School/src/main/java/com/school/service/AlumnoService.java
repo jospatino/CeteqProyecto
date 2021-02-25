@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.school.bean.AlumnoBean;
 import com.school.bean.AlumnoDetalleBean;
+import com.school.bean.ProfesorDetalleBean;
 
 
 public interface AlumnoService {
@@ -13,11 +14,11 @@ public interface AlumnoService {
 	public List<AlumnoBean> list ();
 	public List<AlumnoBean> listaReprobados ();
 	public List<AlumnoDetalleBean> listaCalificaciones ();
-	public List<AlumnoBean> listaAlumnoTutor ();
+	public AlumnoDetalleBean alumnoTutor (Integer id);
 	public List<AlumnoBean> listaDeudores ();
-	public List<AlumnoBean> listaAlumnoProfesor ();
-	public List<AlumnoBean> listaAlumnoProfeId (Integer idProfesor);
-	public List<AlumnoBean> listaAlumnoBeca (double promedio_Alumno);
+	public AlumnoDetalleBean AlumnoProfesor (Integer id);
+	public ProfesorDetalleBean AlumnoProfeId (Integer idProfesor);
+	public List<AlumnoDetalleBean> listaAlumnoBeca ();
 	public List<AlumnoBean> listaAlumnoDerechoExamen ();
 	public AlumnoBean findIdAlumno (Integer idAlumno);
 	public Boolean updateAlumno (AlumnoBean alumnoBean);
