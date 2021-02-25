@@ -106,12 +106,14 @@ public class AlumnoServiceImpl implements AlumnoService {
 		List<AlumnoModel> alumnoList = alumnoRepo.findAll();
 		List<AlumnoBean> alumnoBeanList = new ArrayList<AlumnoBean>();
 		
-		AlumnoDetalleBean alumnoDetalleBean = new  AlumnoDetalleBean();
 		
-		if(alumnoDetalleBean.getIddetalle().getPromedio_Alumno() < 6) 
-			
+		AlumnoModel alumnoDetalle = new AlumnoModel();
 		
+		if(alumnoDetalle.getIddetalle().getPromedio_Alumno() < 6) { 
+				
 		for(AlumnoModel alumno : alumnoList) {
+			
+			
 			
 			AlumnoBean alumnoBean = new AlumnoBean();
 			
@@ -122,7 +124,7 @@ public class AlumnoServiceImpl implements AlumnoService {
 			alumnoBean.setId(alumno.getId());
 			
 			alumnoBeanList.add(alumnoBean);
-
+		 }
 		
 		}
 		return alumnoBeanList;
@@ -144,7 +146,7 @@ public class AlumnoServiceImpl implements AlumnoService {
 			alumnoDetalleBean.setApPaterno(alumno.getApPaterno());
 			alumnoDetalleBean.setApMaterno(alumno.getApMaterno());
 			alumnoDetalleBean.setId(alumno.getId());
-			alumnoDetalleBean.getIddetalle().getPromedio_Alumno();
+			alumnoDetalleBean.setCalificacionAlumno(alumno.getIddetalle().getPromedio_Alumno()); 
 			
 		
 			alumnoDetalleBeanList.add(alumnoDetalleBean);

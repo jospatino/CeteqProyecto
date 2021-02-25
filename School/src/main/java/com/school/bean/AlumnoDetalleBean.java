@@ -14,8 +14,18 @@ private Integer idAlumno;
 	private Integer edadAlumno;
 	
 	private InformacionAlumnoModel iddetalle;
+	
+	private double calificacionAlumno;
 
 	
+
+	public double getCalificacionAlumno() {
+		return calificacionAlumno;
+	}
+
+	public void setCalificacionAlumno(double calificacionAlumno) {
+		this.calificacionAlumno = calificacionAlumno;
+	}
 
 	public AlumnoDetalleBean() {
 	}

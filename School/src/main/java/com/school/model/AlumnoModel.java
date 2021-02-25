@@ -89,6 +89,14 @@ public class AlumnoModel implements Serializable{
 		this.apMaterno = apMaterno;
 	}
 
+	public InformacionAlumnoModel getIddetalle() {
+		return iddetalle;
+	}
+
+	public void setIddetalle(InformacionAlumnoModel iddetalle) {
+		this.iddetalle = iddetalle;
+	}
+
 	public Integer getEdadAlumno() {
 		return edadAlumno;
 	}
