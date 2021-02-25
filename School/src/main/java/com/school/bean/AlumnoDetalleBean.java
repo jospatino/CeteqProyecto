@@ -1,9 +1,9 @@
 package com.school.bean;
 
-public class AlumnoBean {
-	
-	
-    private Integer idAlumno;
+import com.school.model.InformacionAlumnoModel;
+
+public class AlumnoDetalleBean {
+private Integer idAlumno;
 	
 	private String nombreAlumno;
 	
@@ -12,11 +12,15 @@ public class AlumnoBean {
 	private String apMaterno;
 	
 	private Integer edadAlumno;
+	
+	private InformacionAlumnoModel iddetalle;
 
-	public AlumnoBean() {
+	
+
+	public AlumnoDetalleBean() {
 	}
 
-	public AlumnoBean(Integer id) {
+	public AlumnoDetalleBean(Integer id) {
 		this.idAlumno = id;
 	}
 
@@ -59,6 +63,15 @@ public class AlumnoBean {
 	public void setApMaterno(String apMaterno) {
 		this.apMaterno = apMaterno;
 	}
+
+	public InformacionAlumnoModel getIddetalle() {
+		return iddetalle;
+	}
+
+	public void setIddetalle(InformacionAlumnoModel iddetalle) {
+		this.iddetalle = iddetalle;
+	}
+
 
 
 }

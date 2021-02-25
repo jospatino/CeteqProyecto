@@ -19,11 +19,11 @@ public interface ProfesorService {
 		public ProfesorBean ProfesorbyId(Integer id_profesor); //devuelve alumno por id
 		
 		//update devuelve true
-		public boolean uptdateProfesor(Integer id_Producto);
+		public boolean updateProfesor(ProfesorBean UpdateProfesor);
 		
 		//deleted by id
 
-		public boolean deleteProfesor(Integer id_alumno);
+		public boolean deleteProfesor(Integer id_profesor);
 	
 
 }
