@@ -35,6 +35,7 @@ public class AlumnoServiceImpl implements AlumnoService {
 		alumno.setApPaterno(alumnoBean.getApPaterno());
 		alumno.setEdadAlumno(alumnoBean.getEdadAlumno());
 		
+		alumnoRepo.save(alumno);
 		return alumno.getId();
 	}
 
