@@ -19,20 +19,19 @@ import org.springframework.web.bind.annotation.RestController;
 import com.school.bean.AlumnoBean;
 import com.school.bean.AlumnoDetalleBean;
 import com.school.bean.ProfesorDetalleBean;
-import com.school.serviceimpl.AlumnoServiceImpl;
-import com.school.serviceimpl.ProfeServiceImpl;
+import com.school.service.AlumnoService;
+
 
 @RestController
-@RequestMapping("/Servicios3")
+@RequestMapping("/aalumno")
 public class AlumnoController {
+	
 @Autowired
-private AlumnoServiceImpl alumnoService;
+private AlumnoService alumnoService;
 
-@Autowired
-private ProfeServiceImpl profeService;
 
 @PostMapping("/save")
-public ResponseEntity<Integer>saveAlumno(@Valid @RequestBody AlumnoBean alumnoBean){
+public ResponseEntity<Integer>saveAlumno(@RequestBody AlumnoBean alumnoBean){
 	return new ResponseEntity<Integer>(this.alumnoService.saveAlumno(alumnoBean), HttpStatus.OK);
 }
 
