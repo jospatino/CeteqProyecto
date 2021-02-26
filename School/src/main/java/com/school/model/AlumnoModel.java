@@ -1,6 +1,6 @@
 package com.school.model;
 
-import java.io.Serializable;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,28 +14,28 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name = "Tb_Alumnos")
-public class AlumnoModel implements Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class AlumnoModel {
+		
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column (name = "id_Alumno")
 	private Integer idAlumno;
 	
-	@Column (name = "nombre_alumno", nullable = false, length = 80)
+	@Column (name = "nombre_alumno")
 	private String nombreAlumno;
 	
-	@Column (name = "apellido_paterno", nullable = false , length = 80)
+	@Column (name = "apellido_paterno")
 	private String apPaterno;
 	
-	@Column (name = "apellido_materno", nullable = false , length = 80)
+	@Column (name = "apellido_materno")
 	private String apMaterno;
 	
-	@Column (name = "edad_alumno", nullable = false )
+	@Column (name = "edad_alumno")
 	private Integer edadAlumno;
+	
+	
+	
 	
 	
 	public ProfesorModel getProfesor() {
@@ -55,11 +55,11 @@ public class AlumnoModel implements Serializable{
 	}
 
 	@ManyToOne
-	@JoinColumn (name = "id_profesor", nullable = false)
+	@JoinColumn (name = "id_profesor")
 	private ProfesorModel profesor;
 	
 	@ManyToOne
-	@JoinColumn (name = "id_tutor", nullable = false)
+	@JoinColumn (name = "id_tutor")
 	private TutorModel tutor;
 
 	@OneToOne
