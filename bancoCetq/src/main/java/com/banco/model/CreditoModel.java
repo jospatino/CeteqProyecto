@@ -8,13 +8,13 @@ public class CreditoModel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "id", nullable = false)
 	private Integer id_credito;
 	
-	@Column(name = "monto_prestamo")
+	@Column(name = "monto_prestamo", nullable = false)
 	private double monto_prestamo;
 	
-	@Column(name = "adeudo_total")
+	@Column(name = "adeudo_total", nullable = false)
 	private double adeudo_total;
 	
 	@Column(name = "id_cliente")
@@ -31,17 +31,12 @@ public class CreditoModel {
 
 
 
-	public CreditoModel(Integer id_credito, double monto_prestamo, double adeudo_total, ClienteModel id_cliente,
-			DebitoModel id_debito) {
+	public CreditoModel(Integer id_credito) {
 		this.id_credito = id_credito;
-		this.monto_prestamo = monto_prestamo;
-		this.adeudo_total = adeudo_total;
-		this.id_cliente = id_cliente;
-		this.id_debito = id_debito;
+	
 	}
 
-
-
+	
 	public Integer getId_credito() {
 		return id_credito;
 	}
@@ -102,11 +97,7 @@ public class CreditoModel {
 
 
 
-	@Override
-	public String toString() {
-		return "CreditoModel [id_credito=" + id_credito + ", monto_prestamo=" + monto_prestamo + ", adeudo_total="
-				+ adeudo_total + ", id_cliente=" + id_cliente + "]";
-	}
+	
 	
 	
 	
