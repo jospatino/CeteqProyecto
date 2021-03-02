@@ -17,11 +17,12 @@ public class CreditoModel {
 	@Column(name = "adeudo_total", nullable = false)
 	private double adeudo_total;
 	
-	@Column(name = "id_cliente")
-	private ClienteModel id_cliente;
 	
-	@Column(name = "id_debito")
-	private DebitoModel id_debito;
+	@OneToOne (mappedBy = "creditoModel")
+	private DebitoModel debitoModel;
+	
+	@OneToOne (mappedBy = "creditoModel")
+	private ClienteModel clienteModel;
 	
 	
 	
@@ -73,34 +74,30 @@ public class CreditoModel {
 
 
 
-	public ClienteModel getId_cliente() {
-		return id_cliente;
+	public DebitoModel getDebitoModel() {
+		return debitoModel;
 	}
 
 
 
-	public void setId_cliente(ClienteModel id_cliente) {
-		this.id_cliente = id_cliente;
+	public void setDebitoModel(DebitoModel debitoModel) {
+		this.debitoModel = debitoModel;
 	}
 
 
 
-	public DebitoModel getId_debito() {
-		return id_debito;
+	public ClienteModel getClienteModel() {
+		return clienteModel;
 	}
 
 
 
-	public void setId_debito(DebitoModel id_debito) {
-		this.id_debito = id_debito;
+	public void setClienteModel(ClienteModel clienteModel) {
+		this.clienteModel = clienteModel;
 	}
 
 
 
-	
-	
-	
-	
 	
 	
 	

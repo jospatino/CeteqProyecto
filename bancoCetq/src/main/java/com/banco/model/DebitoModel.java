@@ -12,14 +12,15 @@ public class DebitoModel {
 	@Column(name = "id")
 	private Integer idDebito;
 	
-	@Column (name = "idCliente", nullable = false)
-	private ClienteModel idCliente;
-	
 	@Column (name = "saldo", nullable = false)
-	private DebitoModel saldo;
+	private double saldo;
 	
-	@Column (name = "idCredito", nullable = false)
-	private CreditoModel idCredito;
+	@OneToOne (cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_credito")
+	private CreditoModel creditoModel;
+	
+	@OneToOne (mappedBy = "debitoModel")
+	private ClienteModel clienteModel;
 
 	public DebitoModel() {
 	
@@ -38,39 +39,32 @@ public class DebitoModel {
 		this.idDebito = idDebito;
 	}
 
-	public ClienteModel getIdCliente() {
-		return idCliente;
-	}
 
-	public void setIdCliente(ClienteModel idCliente) {
-		this.idCliente = idCliente;
-	}
 
-	public DebitoModel getSaldo() {
+	public double getSaldo() {
 		return saldo;
 	}
 
-	public void setSaldo(DebitoModel saldo) {
+	public void setSaldo(double saldo) {
 		this.saldo = saldo;
 	}
 
-	public CreditoModel getIdCredito() {
-		return idCredito;
+	public CreditoModel getCreditoModel() {
+		return creditoModel;
 	}
 
-	public void setIdCredito(CreditoModel idCredito) {
-		this.idCredito = idCredito;
+	public void setCreditoModel(CreditoModel creditoModel) {
+		this.creditoModel = creditoModel;
 	}
 
-	@Override
-	public String toString() {
-		return "DebitoModel [idDebito=" + idDebito + ", idCliente=" + idCliente + ", saldo=" + saldo + ", idCredito="
-				+ idCredito + "]";
+	public ClienteModel getClienteModel() {
+		return clienteModel;
 	}
-	
-	
-	
-	
+
+	public void setClienteModel(ClienteModel clienteModel) {
+		this.clienteModel = clienteModel;
+	}
+
 
 
 
