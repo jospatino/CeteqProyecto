@@ -74,7 +74,7 @@ public class ClienteServiceImpl implements ClienteService{
 	}
 
 	@Override
-	public ClienteModel update(ClienteBean clienteBean) {
+	public Boolean update(ClienteBean clienteBean) {
 		ClienteModel cliente = clienteRepo.findById(clienteBean.getIdCliente()).orElseThrow();
 		cliente.setNombreCliente(clienteBean.getNombreCliente());
 		cliente.setApPaterno(clienteBean.getApPaterno());
@@ -83,11 +83,11 @@ public class ClienteServiceImpl implements ClienteService{
 		cliente.setEmail(clienteBean.getEmail());
 		
 		clienteRepo.save(cliente);
-		return cliente;
+		return true;
 	}
 
 	@Override
-	public Boolean delete(Integer idCliente) {
+	public Boolean deleteById(Integer idCliente) {
 		ClienteModel cliente = clienteRepo.findById(idCliente).orElseThrow();
 		clienteRepo.delete(cliente);
 		return true;
