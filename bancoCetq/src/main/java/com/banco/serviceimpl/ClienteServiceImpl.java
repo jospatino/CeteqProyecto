@@ -28,7 +28,7 @@ public class ClienteServiceImpl implements ClienteService{
 		cliente.setApPaterno(clienteBean.getApPaterno());
 		cliente.setApMaterno(clienteBean.getApMaterno());
 		cliente.setEmail(clienteBean.getEmail());
-		cliente.setFechaNacimiento(clienteBean.getFechaNacimiento());
+		cliente.setEdad(clienteBean.getEdad());
 		clienteRepo.save(cliente);
 		
 		return cliente.getIdCliente();
@@ -48,7 +48,7 @@ public class ClienteServiceImpl implements ClienteService{
 			clienteBean.setApPaterno(cliente.getApPaterno());
 			clienteBean.setApMaterno(cliente.getApMaterno());
 			clienteBean.setEmail(cliente.getEmail());
-			clienteBean.setFechaNacimiento(cliente.getFechaNacimiento());
+			clienteBean.setEdad(cliente.getEdad());
 			
 			clienteBeanList.add(clienteBean);
 			
@@ -67,7 +67,7 @@ public class ClienteServiceImpl implements ClienteService{
 		clienteBean.setNombreCliente(cliente.getNombreCliente());
 		clienteBean.setApPaterno(cliente.getApPaterno());
 		clienteBean.setApMaterno(cliente.getApMaterno());
-		clienteBean.setFechaNacimiento(cliente.getFechaNacimiento());
+		clienteBean.setEdad(cliente.getEdad());
 		clienteBean.setEmail(cliente.getEmail());
 		
 		return clienteBean;
@@ -79,7 +79,7 @@ public class ClienteServiceImpl implements ClienteService{
 		cliente.setNombreCliente(clienteBean.getNombreCliente());
 		cliente.setApPaterno(clienteBean.getApPaterno());
 		cliente.setApMaterno(clienteBean.getApMaterno());
-		cliente.setFechaNacimiento(clienteBean.getFechaNacimiento());
+		cliente.setEdad(clienteBean.getEdad());
 		cliente.setEmail(clienteBean.getEmail());
 		
 		clienteRepo.save(cliente);

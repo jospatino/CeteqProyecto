@@ -1,7 +1,5 @@
 package com.banco.bean;
 
-import java.text.SimpleDateFormat;
-
 import com.banco.model.CreditoModel;
 import com.banco.model.DebitoModel;
 
@@ -19,7 +17,7 @@ private Integer idCliente;
 	private String apMaterno;
 	
 
-	private SimpleDateFormat fechaNacimiento;
+	private Integer edad;
 	
 
 	private String email;
@@ -87,13 +85,8 @@ private Integer idCliente;
 		this.apMaterno = apMaterno;
 	}
 
-	public SimpleDateFormat getFechaNacimiento() {
-		return fechaNacimiento;
-	}
-
-	public void setFechaNacimiento(SimpleDateFormat fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
-	}
+	
+	
 
 	public String getEmail() {
 		return email;
@@ -101,6 +94,14 @@ private Integer idCliente;
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Integer getEdad() {
+		return edad;
+	}
+
+	public void setEdad(Integer edad) {
+		this.edad = edad;
 	}
 	
 	

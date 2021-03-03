@@ -1,7 +1,5 @@
 package com.banco.model;
 
-import java.text.SimpleDateFormat;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,6 +19,7 @@ public class ClienteModel {
 	@Column (name = "id")
 	private Integer idCliente;
 	
+	
 	@Column ( name = "nombre_cliente", nullable = false, length = 80)
 	private String nombreCliente;
 	
@@ -30,8 +29,8 @@ public class ClienteModel {
 	@Column ( name = "apellido_paterno", nullable = false, length = 80)
 	private String apMaterno;
 	
-	@Column ( name = "fecha_nacimiento", nullable = false)
-	private SimpleDateFormat fechaNacimiento;
+	@Column ( name = "edad", nullable = false)
+	private Integer edad;
 	
 	@Column ( name = "email", nullable = false, length = 80)
 	private String email;
@@ -85,13 +84,7 @@ public class ClienteModel {
 		this.apMaterno = apMaterno;
 	}
 
-	public SimpleDateFormat getFechaNacimiento() {
-		return fechaNacimiento;
-	}
-
-	public void setFechaNacimiento(SimpleDateFormat fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
-	}
+	
 
 	public String getEmail() {
 		return email;
@@ -117,7 +110,14 @@ public class ClienteModel {
 		this.debitoModel = debitoModel;
 	}
 	
-	
+	public Integer getEdad() {
+		return edad;
+	}
+
+	public void setEdad(Integer edad) {
+		this.edad = edad;
+	}
+
 	
 	
 	
