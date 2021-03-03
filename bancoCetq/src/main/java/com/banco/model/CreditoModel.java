@@ -27,7 +27,7 @@ public class CreditoModel {
 	
 	
 	public CreditoModel() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 
