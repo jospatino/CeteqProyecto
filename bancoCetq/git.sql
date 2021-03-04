@@ -1,26 +1,26 @@
 USE db_banco;
 
-INSERT INTO tb_Cliente(nombre_cliente, apellido_paterno, apellido_materno, Fecha_nacimiento, email ) VALUES ('Jose', 'Ramirez', 'Hernandez', 04/10/1985, 'Hramirez@outlook.com');
-INSERT INTO tb_Cliente(nombre_cliente, apellido_paterno, apellido_materno, Fecha_nacimiento, email) VALUES ('Arturo', 'Prieto', 'Fuenlabrada', 03/06/1972, 'Fuenlabrada5@gmail.com');
-INSERT INTO tb_Cliente(nombre_cliente, apellido_paterno, apellido_materno, Fecha_nacimiento, email) VALUES ('Javier', 'Perez', 'Santos', 13/01/1961, 'Perez_Santos@hotmail.es');
-INSERT INTO tb_Cliente(nombre_cliente, apellido_paterno, apellido_materno, Fecha_nacimiento, email) VALUES ('Victor', 'Perusquia', 'Romero', 04/04/1973, 'Perez_Santos@hotmail.es');
-INSERT INTO tb_Cliente(nombre_cliente, apellido_paterno, apellido_materno, Fecha_nacimiento, email) VALUES ('Javier', 'Morales', 'Garcia', 03/05/1955, 'Morales@outlook.com');
-INSERT INTO tb_Cliente(nombre_cliente, apellido_paterno, apellido_materno, Fecha_nacimiento, email) VALUES ('Julian', 'Garcia', 'Romero', 01/10/1981, 'Morales@outlook.com');
-INSERT INTO tb_Cliente(nombre_cliente, apellido_paterno, apellido_materno, Fecha_nacimiento, email) VALUES ('German', 'Solano', 'Gutierres', 07/09/1971, 'GermanG@outlook.com');
-INSERT INTO tb_Cliente(nombre_cliente, apellido_paterno, apellido_materno, Fecha_nacimiento, email) VALUES ('Jazmin', 'Genaro', 'Angeles', 06/07/1967, 'Jazmin_angeles@hotmail.com.mx');
-INSERT INTO tb_Cliente(nombre_cliente, apellido_paterno, apellido_materno, Fecha_nacimiento, email) VALUES ('Maria', 'Rosales', 'Mendez', 23/08/1983, 'RosalesM@outlook.com.mx');
-INSERT INTO tb_Cliente(nombre_cliente, apellido_paterno, apellido_materno, Fecha_nacimiento, email) VALUES ('Ana', 'Fernandez', 'Gutierres', 28/04/1977, 'Fernandez_Guti@outlook.com');
+INSERT INTO tb_Cliente(nombre_cliente, apellido_paterno, apellido_materno, Edad, email, id_credito, id_debito) VALUES ('Jose', 'Ramirez', 'Hernandez', '30', 'Hramirez@outlook.com', 1, 1);
+INSERT INTO tb_Cliente(nombre_cliente, apellido_paterno, apellido_materno, Edad, email, id_credito, id_debito) VALUES ('Arturo', 'Prieto', 'Fuenlabrada', '28', 'Fuenlabrada5@gmail.com', 2, 2);
+INSERT INTO tb_Cliente(nombre_cliente, apellido_paterno, apellido_materno, Edad, email, id_credito, id_debito) VALUES ('Javier', 'Perez', 'Santos', '25', 'Perez_Santos@hotmail.es', 3 , 3);
+INSERT INTO tb_Cliente(nombre_cliente, apellido_paterno, apellido_materno, Edad, email, id_credito, id_debito) VALUES ('Victor', 'Perusquia', 'Romero', '18', 'Perez_Santos@hotmail.es', 4, 4);
+INSERT INTO tb_Cliente(nombre_cliente, apellido_paterno, apellido_materno, Edad, email, id_credito, id_debito) VALUES ('Javier', 'Morales', 'Garcia', '22', 'Morales@outlook.com', 5, 5);
+INSERT INTO tb_Cliente(nombre_cliente, apellido_paterno, apellido_materno, Edad, email, id_credito, id_debito) VALUES ('Julian', 'Garcia', 'Romero', '33', 'Morales@outlook.com',6 , 6);
+INSERT INTO tb_Cliente(nombre_cliente, apellido_paterno, apellido_materno, Edad, email, id_credito, id_debito) VALUES ('German', 'Solano', 'Gutierres', '35', 'GermanG@outlook.com', 7, 7);
+INSERT INTO tb_Cliente(nombre_cliente, apellido_paterno, apellido_materno, Edad, email, id_credito, id_debito) VALUES ('Jazmin', 'Genaro', 'Angeles', '40', 'Jazmin_angeles@hotmail.com.mx', 8, 8);
+INSERT INTO tb_Cliente(nombre_cliente, apellido_paterno, apellido_materno, Edad, email, id_credito, id_debito) VALUES ('Maria', 'Rosales', 'Mendez', '48', 'RosalesM@outlook.com.mx', 9, 9);
+INSERT INTO tb_Cliente(nombre_cliente, apellido_paterno, apellido_materno, Edad, email, id_credito, id_debito) VALUES ('Ana', 'Fernandez', 'Gutierres', '52', 'Fernandez_Guti@outlook.com', 10, 10);
 
-INSERT INTO debito(Saldo) VALUES (1500000);
-INSERT INTO debito(Saldo) VALUES (50000);
-INSERT INTO debito(Saldo) VALUES (100000);
-INSERT INTO debito(Saldo) VALUES (6500000);
-INSERT INTO debito(Saldo) VALUES (12000000);
-INSERT INTO debito(Saldo) VALUES (300000000);
-INSERT INTO debito(Saldo) VALUES (800000000);
-INSERT INTO debito(Saldo) VALUES (280000000);
-INSERT INTO debito(Saldo) VALUES (580000000);
-INSERT INTO debito(Saldo) VALUES (30000);
+INSERT INTO debito(Saldo, id_credito) VALUES (1500000, 1);
+INSERT INTO debito(Saldo, id_credito) VALUES (50000, 2);
+INSERT INTO debito(Saldo, id_credito) VALUES (100000, 3);
+INSERT INTO debito(Saldo, id_credito) VALUES (6500000, 4);
+INSERT INTO debito(Saldo, id_credito) VALUES (12000000, 5);
+INSERT INTO debito(Saldo, id_credito) VALUES (300000000, 6);
+INSERT INTO debito(Saldo, id_credito) VALUES (800000000, 7);
+INSERT INTO debito(Saldo, id_credito) VALUES (280000000, 8);
+INSERT INTO debito(Saldo, id_credito) VALUES (580000000, 9);
+INSERT INTO debito(Saldo, id_credito) VALUES (30000, 10);
 
 INSERT INTO credito(monto_prestamo, adeudo_total) VALUES (5000, 3000);
 INSERT INTO credito(monto_prestamo, adeudo_total) VALUES (10000, 9000);
