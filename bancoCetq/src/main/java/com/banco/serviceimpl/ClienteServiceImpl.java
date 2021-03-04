@@ -160,10 +160,31 @@ public class ClienteServiceImpl implements ClienteService{
 	@Override
 	public List<ClienteAuxBean> clientesDeudas() {
 
+		List <ClienteModel> clienteList = clienteRepo.findAll();
+		List <ClienteAuxBean> clienteAuxBeanList = new ArrayList<ClienteAuxBean>();
+		
+	
+		
+			
+			for (ClienteModel cliente : clienteList) {
+				if(cliente.getCreditoModel().getAdeudo_total() > 0) {
+				
+				ClienteAuxBean clienteBean = new ClienteAuxBean();
+				
+				clienteBean.setIdCliente(cliente.getIdCliente());
+				clienteBean.setNombreCliente(cliente.getNombreCliente());
+				clienteBean.setApPaterno(cliente.getApPaterno());
+				clienteBean.setApMaterno(cliente.getApMaterno());
+				clienteBean.setAdeudo_total(cliente.getCreditoModel().getAdeudo_total());
+			
+				clienteAuxBeanList.add(clienteBean);
+				}
+			}
 		
 		
 		
-		return null;
+		
+		return clienteAuxBeanList;
 	}
 	
 	

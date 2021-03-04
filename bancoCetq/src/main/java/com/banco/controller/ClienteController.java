@@ -62,4 +62,8 @@ public class ClienteController {
 	public ResponseEntity<ClienteAuxBean>retiro(@PathVariable("idCliente")Integer idCliente, @PathVariable ("retirar") double retirar){
 		return new ResponseEntity<ClienteAuxBean>(this.clienteService.retiro(idCliente, retirar),HttpStatus.OK);
 	}
+	@GetMapping("/clientesDeudas")
+	public ResponseEntity<List<ClienteAuxBean>> clientesDeudas(){
+		return new ResponseEntity<> (this.clienteService.clientesDeudas(), HttpStatus.OK);
+	}
 }
