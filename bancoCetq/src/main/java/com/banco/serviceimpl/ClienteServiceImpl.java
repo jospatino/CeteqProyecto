@@ -63,7 +63,7 @@ public class ClienteServiceImpl implements ClienteService{
 	@Override
 	public ClienteBean findId(Integer idCliente) {
 
-		ClienteModel cliente = clienteRepo.findById(idCliente).orElseThrow();
+		ClienteModel cliente = clienteRepo.findById(idCliente).orElseThrow(null);
 		ClienteBean clienteBean = new ClienteBean();
 		
 		clienteBean.setNombreCliente(cliente.getNombreCliente());
@@ -78,7 +78,7 @@ public class ClienteServiceImpl implements ClienteService{
 
 	@Override
 	public Boolean update(ClienteBean clienteBean) {
-		ClienteModel cliente = clienteRepo.findById(clienteBean.getIdCliente()).orElseThrow();
+		ClienteModel cliente = clienteRepo.findById(clienteBean.getIdCliente()).orElseThrow(null);
 		cliente.setNombreCliente(clienteBean.getNombreCliente());
 		cliente.setApPaterno(clienteBean.getApPaterno());
 		cliente.setApMaterno(clienteBean.getApMaterno());
@@ -91,7 +91,7 @@ public class ClienteServiceImpl implements ClienteService{
 
 	@Override
 	public Boolean deleteById(Integer idCliente) {
-		ClienteModel cliente = clienteRepo.findById(idCliente).orElseThrow();
+		ClienteModel cliente = clienteRepo.findById(idCliente).orElseThrow(null);
 		clienteRepo.delete(cliente);
 		return true;
 	}
@@ -122,7 +122,7 @@ public class ClienteServiceImpl implements ClienteService{
 
 	@Override
 	public ClienteAuxBean abonarDeuda(Integer idCliente, double abono) {
-   ClienteModel cliente = clienteRepo.findById(idCliente).orElseThrow();
+   ClienteModel cliente = clienteRepo.findById(idCliente).orElseThrow(null);
    ClienteAuxBean clienteAuxBean = new ClienteAuxBean();
    
    cliente.getCreditoModel().setAdeudo_total(cliente.getCreditoModel().getAdeudo_total()-abono);
@@ -139,7 +139,7 @@ public class ClienteServiceImpl implements ClienteService{
 
 	@Override
 	public ClienteAuxBean retiro(Integer idCliente, double retirar) {
-		ClienteModel cliente = clienteRepo.findById(idCliente).orElseThrow();
+		ClienteModel cliente = clienteRepo.findById(idCliente).orElseThrow(null);
 		ClienteAuxBean clienteAuxBean = new ClienteAuxBean();
 		
 		cliente.getDebitoModel().setSaldo(cliente.getDebitoModel().getSaldo()-retirar);
