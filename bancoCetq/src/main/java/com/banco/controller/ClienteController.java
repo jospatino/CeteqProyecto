@@ -70,4 +70,9 @@ public class ClienteController {
 	public ResponseEntity<Boolean> eligibilidadPrestamo(@PathVariable("idCliente") Integer idCliente){
 		return new ResponseEntity<>(this.clienteService.eligibilidadPrestamo(idCliente), HttpStatus.OK);
 	}
+	
+	@GetMapping("/saldoUsuario/{idCliente}")
+	public ResponseEntity<ClienteAuxBean> saldoUsuario(@PathVariable("idCliente") Integer idCliente){
+		return new ResponseEntity<>(this.clienteService.saldoUsuario(idCliente), HttpStatus.FOUND);
+}
 }

@@ -246,7 +246,21 @@ public class ClienteServiceImpl implements ClienteService{
 	
 	
 	}
+
+	@Override
+	public ClienteAuxBean saldoUsuario(Integer idCliente) {
 	
+		ClienteModel cliente = clienteRepo.findById(idCliente).orElseThrow();
+		ClienteAuxBean clienteBean = new ClienteAuxBean();
+		
+		clienteBean.setNombreCliente(cliente.getNombreCliente());
+		clienteBean.setApPaterno(cliente.getApPaterno());
+		clienteBean.setApMaterno(cliente.getApMaterno());
+		clienteBean.setIdCliente(idCliente);
+		clienteBean.setSaldo(cliente.getDebitoModel().getSaldo());
+	
+		return clienteBean;
+	}
 	
 	
 }

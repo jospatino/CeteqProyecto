@@ -19,4 +19,6 @@ public interface ClienteService {
 	public Boolean eligibilidadPrestamo(Integer idCliente);
 	public List<ClienteAuxBean> clienteSelecto();
 	public Boolean upgradecliente(Integer idCliente);
+	public ClienteAuxBean saldoUsuario (Integer idCliente);
+	
 }
