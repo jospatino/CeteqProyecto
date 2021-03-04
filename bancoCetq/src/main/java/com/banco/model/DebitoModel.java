@@ -13,7 +13,7 @@ public class DebitoModel {
 	private Integer idDebito;
 	
 	@Column (name = "saldo", nullable = false)
-	private double saldo;
+	private double saldo; 
 	
 	@OneToOne (cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_credito")
@@ -63,6 +63,11 @@ public class DebitoModel {
 
 	public void setClienteModel(ClienteModel clienteModel) {
 		this.clienteModel = clienteModel;
+	}
+
+	@Override
+	public String toString() {
+		return "DebitoModel [idDebito=" + idDebito + ", saldo=" + saldo ;
 	}
 
 

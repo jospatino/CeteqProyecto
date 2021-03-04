@@ -2,6 +2,7 @@ package com.banco.service;
 
 import java.util.List;
 
+import com.banco.bean.ClienteAuxBean;
 import com.banco.bean.ClienteBean;
 
 public interface ClienteService {
@@ -11,6 +12,8 @@ public interface ClienteService {
 	public ClienteBean findId (Integer idCliente);
 	public Boolean update (ClienteBean clienteBean);
 	public Boolean deleteById (Integer idCliente);
-	public ClienteBean depositar ( Integer idCliente, double deposito);
-	public ClienteBean abonarDeuda (Integer idCliente, double abono);
+	public ClienteAuxBean depositar ( Integer idCliente, double deposito);
+	public ClienteAuxBean abonarDeuda (Integer idCliente, double abono);
+	public ClienteAuxBean retiro (Integer idCliente, double retirar);
+	public List<ClienteAuxBean> clientesDeudas();
 }

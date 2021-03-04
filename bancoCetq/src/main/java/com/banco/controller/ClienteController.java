@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.banco.bean.ClienteAuxBean;
 import com.banco.bean.ClienteBean;
 import com.banco.service.ClienteService;
 
@@ -48,13 +49,17 @@ public class ClienteController {
 	public ResponseEntity <Boolean> deleteById (@PathVariable ("idCliente") Integer idCliente){
 		return new ResponseEntity<Boolean>(this.clienteService.deleteById(idCliente),HttpStatus.OK);
 	}
-	@PutMapping ("/depositar/{idCliente}/deposito")
-	public ResponseEntity<ClienteBean>depositar(@PathVariable("idCliente")Integer idCliente, @PathVariable ("deposito")double deposito){
-		return new ResponseEntity<ClienteBean>(this.clienteService.depositar(idCliente, deposito),HttpStatus.OK);
+	@PutMapping ("/depositar/{idCliente}/{deposito}")
+	public ResponseEntity<ClienteAuxBean>depositar(@PathVariable("idCliente")Integer idCliente, @PathVariable ("deposito") double deposito){
+		return new ResponseEntity<ClienteAuxBean>(this.clienteService.depositar(idCliente, deposito),HttpStatus.OK);
 	}
 	
-	@PutMapping("/abonarDeuda/{idCliente}/abono")
-	public ResponseEntity<ClienteBean>abonarDeuda(@PathVariable("idCliente") Integer idCliente, @PathVariable("abono") double abono){
-		return new ResponseEntity<ClienteBean>(this.clienteService.abonarDeuda(idCliente, abono),HttpStatus.OK);
+	@PutMapping("/abonarDeuda/{idCliente}/{abono}")
+	public ResponseEntity<ClienteAuxBean>abonarDeuda(@PathVariable("idCliente") Integer idCliente, @PathVariable("abono") double abono){
+		return new ResponseEntity<ClienteAuxBean>(this.clienteService.abonarDeuda(idCliente, abono),HttpStatus.OK);
+	}
+	@PutMapping ("/retiro/{idCliente}/{retirar}")
+	public ResponseEntity<ClienteAuxBean>retiro(@PathVariable("idCliente")Integer idCliente, @PathVariable ("retirar") double retirar){
+		return new ResponseEntity<ClienteAuxBean>(this.clienteService.retiro(idCliente, retirar),HttpStatus.OK);
 	}
 }

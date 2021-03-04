@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.banco.bean.ClienteAuxBean;
 import com.banco.bean.ClienteBean;
 import com.banco.model.ClienteModel;
 import com.banco.repository.ClienteRepository;
@@ -49,6 +50,7 @@ public class ClienteServiceImpl implements ClienteService{
 			clienteBean.setApMaterno(cliente.getApMaterno());
 			clienteBean.setEmail(cliente.getEmail());
 			clienteBean.setEdad(cliente.getEdad());
+			clienteBean.setIdCliente(cliente.getIdCliente());
 			
 			clienteBeanList.add(clienteBean);
 			
@@ -69,6 +71,7 @@ public class ClienteServiceImpl implements ClienteService{
 		clienteBean.setApMaterno(cliente.getApMaterno());
 		clienteBean.setEdad(cliente.getEdad());
 		clienteBean.setEmail(cliente.getEmail());
+		clienteBean.setIdCliente(idCliente);
 		
 		return clienteBean;
 	}
@@ -94,37 +97,73 @@ public class ClienteServiceImpl implements ClienteService{
 	}
 
 	@Override
-	public ClienteBean depositar(Integer idCliente, double deposito) {
-		ClienteModel cliente = clienteRepo.findById(idCliente).orElse(null);
-       ClienteBean clienteBean = new ClienteBean();
+	public ClienteAuxBean depositar(Integer idCliente, double deposito) {
+		ClienteModel cliente = clienteRepo.findById(idCliente).orElseThrow(null);
+        ClienteAuxBean clienteAuxBean = new ClienteAuxBean();
 
         
         cliente.getDebitoModel().setSaldo(cliente.getDebitoModel().getSaldo()+deposito);
         
         clienteRepo.save(cliente);
         
-        clienteBean.setNombreCliente(cliente.getNombreCliente());
-        clienteBean.setApPaterno(cliente.getApPaterno());
-        clienteBean.setApMaterno(cliente.getApMaterno());
-        clienteBean.getDebitoModel().setSaldo(cliente.getDebitoModel().getSaldo());
+        clienteAuxBean.setIdCliente(idCliente);
+        clienteAuxBean.setNombreCliente(cliente.getNombreCliente());
+        clienteAuxBean.setApPaterno(cliente.getApPaterno());
+        clienteAuxBean.setApMaterno(cliente.getApMaterno());
+        clienteAuxBean.setEmail(cliente.getEmail());
+        clienteAuxBean.setSaldo(cliente.getDebitoModel().getSaldo());
         
-		return clienteBean;
+
+
+        
+        clienteRepo.save(cliente);
+		return clienteAuxBean;
 	}
 
 	@Override
-	public ClienteBean abonarDeuda(Integer idCliente, double abono) {
+	public ClienteAuxBean abonarDeuda(Integer idCliente, double abono) {
    ClienteModel cliente = clienteRepo.findById(idCliente).orElseThrow();
-   ClienteBean clienteBean = new ClienteBean();
+   ClienteAuxBean clienteAuxBean = new ClienteAuxBean();
    
    cliente.getCreditoModel().setAdeudo_total(cliente.getCreditoModel().getAdeudo_total()-abono);
    clienteRepo.save(cliente);
    
-   clienteBean.setNombreCliente(cliente.getNombreCliente());
-   clienteBean.setApPaterno(cliente.getApPaterno());
-   clienteBean.setApMaterno(cliente.getApMaterno());
-   clienteBean.getDebitoModel().setSaldo(cliente.getDebitoModel().getSaldo());
+   clienteAuxBean.setIdCliente(idCliente);
+   clienteAuxBean.setNombreCliente(cliente.getNombreCliente());
+   clienteAuxBean.setApPaterno(cliente.getApPaterno());
+   clienteAuxBean.setApMaterno(cliente.getApMaterno());
+   clienteAuxBean.setAdeudo_total(cliente.getCreditoModel().getAdeudo_total());
    
-	return clienteBean;
+	return clienteAuxBean;
+	}
+
+	@Override
+	public ClienteAuxBean retiro(Integer idCliente, double retirar) {
+		ClienteModel cliente = clienteRepo.findById(idCliente).orElseThrow();
+		ClienteAuxBean clienteAuxBean = new ClienteAuxBean();
+		
+		cliente.getDebitoModel().setSaldo(cliente.getDebitoModel().getSaldo()-retirar);
+		
+		clienteRepo.save(cliente);
+		
+		clienteAuxBean.setIdCliente(idCliente);
+        clienteAuxBean.setNombreCliente(cliente.getNombreCliente());
+        clienteAuxBean.setApPaterno(cliente.getApPaterno());
+        clienteAuxBean.setApMaterno(cliente.getApMaterno());
+        clienteAuxBean.setEmail(cliente.getEmail());
+        clienteAuxBean.setSaldo(cliente.getDebitoModel().getSaldo());
+		
+		
+		return clienteAuxBean;
+	}
+
+	@Override
+	public List<ClienteAuxBean> clientesDeudas() {
+
+		
+		
+		
+		return null;
 	}
 	
 	
