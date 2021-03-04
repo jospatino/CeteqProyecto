@@ -167,7 +167,7 @@ public class ClienteServiceImpl implements ClienteService{
 		
 			
 			for (ClienteModel cliente : clienteList) {
-				if(cliente.getCreditoModel().getAdeudo_total() > 0) {
+				if( cliente.getCreditoModel() != null && cliente.getCreditoModel().getAdeudo_total() > 0) {
 				
 				ClienteAuxBean clienteBean = new ClienteAuxBean();
 				
@@ -187,10 +187,65 @@ public class ClienteServiceImpl implements ClienteService{
 		return clienteAuxBeanList;
 	}
 	
+	@Override
+	public Boolean eligibilidadPrestamo(Integer idCliente) {
+		ClienteModel cliente = clienteRepo.findById(idCliente).orElseThrow(null);
+		Boolean clienteSelecto = false;
+		
+		if (cliente.getDebitoModel().getSaldo()>= 50000 && cliente.getCreditoModel().getAdeudo_total()<=(cliente.getCreditoModel().getMonto_prestamo()*.50)) {
+			clienteSelecto = true;	
+		}
+		
+		return clienteSelecto;
+	}
+	
+	
+
+	@Override
+	public List<ClienteAuxBean> clienteSelecto() {
+		List<ClienteModel> clientesSelectos =clienteRepo.findAll();
+		List<ClienteAuxBean> clientesSelectosBean = new ArrayList<ClienteAuxBean>();
+		
+		for (ClienteModel clienteSelecto : clientesSelectos) {
+						
+			if (clienteSelecto.getCreditoModel().getMonto_prestamo()>=80000 && clienteSelecto.getDebitoModel().getSaldo()>=50000) {
+				ClienteAuxBean clienteBean = new ClienteAuxBean();
+				
+				clienteBean.setNombreCliente(clienteSelecto.getNombreCliente());
+				clienteBean.setApPaterno(clienteSelecto.getApPaterno());
+				clienteBean.setApMaterno(clienteSelecto.getApMaterno());
+				//clienteBean.setEdad(clienteSelecto.getEdad());
+				clienteBean.setIdCliente(clienteSelecto.getIdCliente());
+				//clienteBean.getDebitoModel().setSaldo(clienteSelecto.getDebitoModel().getSaldo());
+				//clienteBean.getCreditoModel().setMonto_prestamo(clienteSelecto.getCreditoModel().getMonto_prestamo());
+				
+				clientesSelectosBean.add(clienteBean);
+			}
+			
+		}
+		
+		return clientesSelectosBean;
+	}
+
+	
+	
+	@Override
+	public Boolean upgradecliente(Integer idCliente) {
+		
+		ClienteModel cliente = clienteRepo.findById(idCliente).orElseThrow(null);
+		Boolean upgradeCliente = false;
+		
+		if (cliente.getCreditoModel().getMonto_prestamo()>=80000 && cliente.getDebitoModel().getSaldo()>=50000) {
+			
+			upgradeCliente = true;
+		}
+		
+		return upgradeCliente;
 	
 	
 	
 	
+	}
 	
 	
 	

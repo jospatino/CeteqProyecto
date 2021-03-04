@@ -16,4 +16,7 @@ public interface ClienteService {
 	public ClienteAuxBean abonarDeuda (Integer idCliente, double abono);
 	public ClienteAuxBean retiro (Integer idCliente, double retirar);
 	public List<ClienteAuxBean> clientesDeudas();
+	public Boolean eligibilidadPrestamo(Integer idCliente);
+	public List<ClienteAuxBean> clienteSelecto();
+	public Boolean upgradecliente(Integer idCliente);
 }
