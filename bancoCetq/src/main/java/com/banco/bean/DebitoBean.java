@@ -4,6 +4,11 @@ import java.io.Serializable;
 
 public class DebitoBean implements Serializable {
 
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 private Integer idDebito;
 
 private Integer idCliente;
@@ -15,6 +20,13 @@ private Integer idCredito;
 public DebitoBean(Integer idDebito) {
 	this.idDebito = idDebito;
 }
+
+
+
+public DebitoBean() {
+}
+
+
 
 public Integer getIdDebito() {
 	return idDebito;
