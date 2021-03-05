@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.banco.bean.ClienteAuxBean;
 import com.banco.bean.ClienteBean;
+import com.banco.bean.CreditoBean;
 import com.banco.service.ClienteService;
+import com.banco.service.CreditoService;
 
 
 @RequestMapping("/cliente")
@@ -25,6 +27,9 @@ public class ClienteController {
 
 	@Autowired
 	private ClienteService clienteService;
+	
+	@Autowired
+	private CreditoService creditoservice;
 	
 	@PostMapping("/save")
 	public ResponseEntity<Integer> save(@RequestBody ClienteBean clienteBean){
@@ -71,9 +76,56 @@ public class ClienteController {
 		return new ResponseEntity<>(this.clienteService.eligibilidadPrestamo(idCliente), HttpStatus.OK);
 	}
 	
+
+	@GetMapping("/clienteSelecto")
+	public ResponseEntity<List<ClienteAuxBean>> clienteSelecto(){
+		return new ResponseEntity<> (this.clienteService.clienteSelecto(), HttpStatus.OK);
+	}
+	
+	@GetMapping("/upgradecliente/{idCliente}")
+	public ResponseEntity<Boolean> upgradecliente(@PathVariable("idCliente") Integer idCliente){
+		return new ResponseEntity<>(this.clienteService.upgradecliente(idCliente), HttpStatus.OK);
+	}
+	
+	@PostMapping("/crearCredito")
+	public ResponseEntity<Integer> crearCredito(@RequestBody CreditoBean creditoNuevo){
+		return new ResponseEntity<>(this.creditoservice.crearCredito(creditoNuevo), HttpStatus.OK);
+	}
+	
+	@GetMapping("/listaCreditos")
+	public ResponseEntity<List<CreditoBean>> listaCreditos(){
+		return new ResponseEntity<> (this.creditoservice.listaCreditos(), HttpStatus.OK);
+	}
+	
+	@GetMapping("/creditoPorId/{idCliente}")
+	public ResponseEntity<CreditoBean> creditoPorId(@PathVariable("idCliente") Integer idCliente){
+		return new ResponseEntity<>(this.creditoservice.creditoPorId(idCliente), HttpStatus.OK);
+	}
+	
+	@PutMapping("/updateCredito")
+	public ResponseEntity<Boolean> updateCredito(@RequestBody CreditoBean creditoBean){
+		return new ResponseEntity<>(this.creditoservice.updateCredito(creditoBean), HttpStatus.OK);
+	}
+	
+	@DeleteMapping("/deleteCreditoById/{idCliente}")
+	public ResponseEntity <Boolean> deleteCreditoById (@PathVariable ("idCliente") Integer idCliente){
+		return new ResponseEntity<Boolean>(this.creditoservice.deleteCreditoById(idCliente),HttpStatus.OK);
+	}
+
 	@GetMapping("/saldoUsuario/{idCliente}")
 	public ResponseEntity<ClienteAuxBean> saldoUsuario(@PathVariable("idCliente") Integer idCliente){
 		return new ResponseEntity<>(this.clienteService.saldoUsuario(idCliente), HttpStatus.FOUND);
+		
+	}
+	
+	@PutMapping ("/transferirCliente/{idEmisor}/{idReceptor}/{monto}")
+	public ResponseEntity <Boolean> transferirCliente(@PathVariable ("idEmisor") Integer idEmisor, @PathVariable ("idReceptor") Integer idReceptor,@PathVariable ("monto") double monto){
+		return new ResponseEntity<Boolean>(this.clienteService.transferirCliente(idEmisor, idReceptor, monto),HttpStatus.OK);
+		
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> c29bdd9476ae83cb82af6f9f2c2ca06aea183059
 	
 }

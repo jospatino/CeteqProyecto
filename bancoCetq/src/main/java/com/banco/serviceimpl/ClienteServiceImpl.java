@@ -207,8 +207,11 @@ public class ClienteServiceImpl implements ClienteService{
 		List<ClienteAuxBean> clientesSelectosBean = new ArrayList<ClienteAuxBean>();
 		
 		for (ClienteModel clienteSelecto : clientesSelectos) {
-						
-			if (clienteSelecto.getCreditoModel().getMonto_prestamo()>=80000 && clienteSelecto.getDebitoModel().getSaldo()>=50000) {
+			if (clienteSelecto.getCreditoModel() != null &&
+					clienteSelecto.getCreditoModel().getMonto_prestamo()>=80000
+					                         && clienteSelecto.getDebitoModel() != null && 
+					                         clienteSelecto.getDebitoModel().getSaldo()>=50000) {
+				
 				ClienteAuxBean clienteBean = new ClienteAuxBean();
 				
 				clienteBean.setNombreCliente(clienteSelecto.getNombreCliente());
@@ -221,7 +224,6 @@ public class ClienteServiceImpl implements ClienteService{
 				
 				clientesSelectosBean.add(clienteBean);
 			}
-			
 		}
 		
 		return clientesSelectosBean;
@@ -250,7 +252,7 @@ public class ClienteServiceImpl implements ClienteService{
 	@Override
 	public ClienteAuxBean saldoUsuario(Integer idCliente) {
 	
-		ClienteModel cliente = clienteRepo.findById(idCliente).orElseThrow();
+		ClienteModel cliente = clienteRepo.findById(idCliente).orElseThrow(null);
 		ClienteAuxBean clienteBean = new ClienteAuxBean();
 		
 		clienteBean.setNombreCliente(cliente.getNombreCliente());
@@ -261,6 +263,25 @@ public class ClienteServiceImpl implements ClienteService{
 	
 		return clienteBean;
 	}
+
+	@Override
+	public Boolean transferirCliente(Integer idEmisor, Integer idReceptor, double monto) {
+		ClienteModel cliente = clienteRepo.findById(idEmisor).orElseThrow(null);
+		ClienteModel cliente1 = clienteRepo.findById(idReceptor).orElseThrow(null);
+		
+		cliente.getDebitoModel().setSaldo(cliente.getDebitoModel().getSaldo() - monto);
+		cliente1.getDebitoModel().setSaldo(cliente1.getDebitoModel().getSaldo() + monto);
+		
+		
+		return true;
+	}
 	
+	//	public void transferencia(int transferencia, Persona persona) {
+	//persona.getCuenta().setSaldo(persona.getCuenta().getSaldo() + transferencia);
+	//this.cuenta.setSaldo(this.cuenta.getSaldo() - transferencia);
 	
-}
+		
+		
+	}
+
+
