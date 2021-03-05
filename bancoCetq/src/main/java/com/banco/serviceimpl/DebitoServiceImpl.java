@@ -36,9 +36,12 @@ private DebitoRepository debitoRepo;
 		
 		for(DebitoModel debito : debitoList) {
 			DebitoBean debitoBean = new DebitoBean();
-			
+		
+			debitoBean.setIdCliente(debito.getClienteModel().getIdCliente());
 			debitoBean.setIdDebito(debito.getIdDebito());
-			debitoBean.setSaldo(debito.getSaldo());
+	        debitoBean.setIdCredito(debito.getCreditoModel().getId_credito());
+			debitoBean.setIdDebito(debito.getIdDebito());
+			debitoBean.setSaldo((long) debito.getSaldo());
 			
 			debitoBeanList.add(debitoBean);
 			
@@ -53,18 +56,20 @@ private DebitoRepository debitoRepo;
 		DebitoModel debito = debitoRepo.findById(idDebito).orElseThrow(null);
         DebitoBean debitoBean = new DebitoBean();
 		
+        
+        debitoBean.setIdDebito(debito.getIdDebito());
+        debitoBean.setIdCredito(debito.getCreditoModel().getId_credito());
 		debitoBean.setIdCliente(idDebito);
-		debitoBean.setSaldo(debito.getSaldo());
+		debitoBean.setSaldo((long) debito.getSaldo());
 		
 		return debitoBean;
 	}
-
 	@Override
 	public Boolean update(DebitoBean debitoBean) {
 
 		DebitoModel debito = debitoRepo.findById(debitoBean.getIdDebito()).orElseThrow();
 		debito.setSaldo(debitoBean.getSaldo());
-		
+		debito.getClienteModel().setIdCliente(debitoBean.getIdCliente());
 		debitoRepo.save(debito);
 	
 		return true;

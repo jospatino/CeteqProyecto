@@ -23,28 +23,32 @@ private Integer idCliente;
 	private String email;
 	
 	
-	private CreditoModel creditoModel;
+	private Integer creditoModel;
+	
+	private Integer debitoModel;
 	
 	
 	
+
+
+
 	
-	public CreditoModel getCreditoModel() {
+
+	public Integer getCreditoModel() {
 		return creditoModel;
 	}
 
-	public void setCreditoModel(CreditoModel creditoModel) {
+	public void setCreditoModel(Integer creditoModel) {
 		this.creditoModel = creditoModel;
 	}
 
-	public DebitoModel getDebitoModel() {
+	public Integer getDebitoModel() {
 		return debitoModel;
 	}
 
-	public void setDebitoModel(DebitoModel debitoModel) {
+	public void setDebitoModel(Integer debitoModel) {
 		this.debitoModel = debitoModel;
 	}
-
-	private DebitoModel debitoModel;
 
 	public ClienteBean() {
 	}

@@ -123,9 +123,5 @@ public class ClienteController {
 		return new ResponseEntity<Boolean>(this.clienteService.transferirCliente(idEmisor, idReceptor, monto),HttpStatus.OK);
 		
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> c29bdd9476ae83cb82af6f9f2c2ca06aea183059
-	
 }

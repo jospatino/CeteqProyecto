@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import com.banco.bean.ClienteAuxBean;
 import com.banco.bean.ClienteBean;
 import com.banco.model.ClienteModel;
+import com.banco.model.CreditoModel;
+import com.banco.model.DebitoModel;
 import com.banco.repository.ClienteRepository;
 import com.banco.service.ClienteService;
 
@@ -51,6 +53,13 @@ public class ClienteServiceImpl implements ClienteService{
 			clienteBean.setEmail(cliente.getEmail());
 			clienteBean.setEdad(cliente.getEdad());
 			clienteBean.setIdCliente(cliente.getIdCliente());
+			if( cliente.getCreditoModel() != null)
+				clienteBean.setCreditoModel(cliente.getCreditoModel().getId_credito());
+			
+			
+			if( cliente.getDebitoModel() != null)
+			clienteBean.setDebitoModel(cliente.getDebitoModel().getIdDebito());
+			
 			
 			clienteBeanList.add(clienteBean);
 			
@@ -72,6 +81,12 @@ public class ClienteServiceImpl implements ClienteService{
 		clienteBean.setEdad(cliente.getEdad());
 		clienteBean.setEmail(cliente.getEmail());
 		clienteBean.setIdCliente(idCliente);
+		if( cliente.getCreditoModel() != null)
+			clienteBean.setCreditoModel(cliente.getCreditoModel().getId_credito());
+		
+		
+		if( cliente.getDebitoModel() != null)
+		clienteBean.setDebitoModel(cliente.getDebitoModel().getIdDebito());
 		
 		return clienteBean;
 	}
@@ -84,6 +99,10 @@ public class ClienteServiceImpl implements ClienteService{
 		cliente.setApMaterno(clienteBean.getApMaterno());
 		cliente.setEdad(clienteBean.getEdad());
 		cliente.setEmail(clienteBean.getEmail());
+		
+		cliente.setDebitoModel(new DebitoModel(clienteBean.getDebitoModel()));
+		cliente.setCreditoModel(new CreditoModel (clienteBean.getCreditoModel()));
+		
 		
 		clienteRepo.save(cliente);
 		return true;
@@ -170,8 +189,8 @@ public class ClienteServiceImpl implements ClienteService{
 				if( cliente.getCreditoModel() != null && cliente.getCreditoModel().getAdeudo_total() > 0) {
 				
 				ClienteAuxBean clienteBean = new ClienteAuxBean();
-				
 				clienteBean.setIdCliente(cliente.getIdCliente());
+
 				clienteBean.setNombreCliente(cliente.getNombreCliente());
 				clienteBean.setApPaterno(cliente.getApPaterno());
 				clienteBean.setApMaterno(cliente.getApMaterno());
