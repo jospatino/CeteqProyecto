@@ -207,8 +207,11 @@ public class ClienteServiceImpl implements ClienteService{
 		List<ClienteAuxBean> clientesSelectosBean = new ArrayList<ClienteAuxBean>();
 		
 		for (ClienteModel clienteSelecto : clientesSelectos) {
-						
-			if (clienteSelecto.getCreditoModel().getMonto_prestamo()>=80000 && clienteSelecto.getDebitoModel().getSaldo()>=50000) {
+			if (clienteSelecto.getCreditoModel() != null &&
+					clienteSelecto.getCreditoModel().getMonto_prestamo()>=80000
+					                         && clienteSelecto.getDebitoModel() != null && 
+					                         clienteSelecto.getDebitoModel().getSaldo()>=50000) {
+				
 				ClienteAuxBean clienteBean = new ClienteAuxBean();
 				
 				clienteBean.setNombreCliente(clienteSelecto.getNombreCliente());
@@ -221,7 +224,6 @@ public class ClienteServiceImpl implements ClienteService{
 				
 				clientesSelectosBean.add(clienteBean);
 			}
-			
 		}
 		
 		return clientesSelectosBean;

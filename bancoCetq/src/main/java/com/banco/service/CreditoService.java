@@ -23,15 +23,6 @@ public interface CreditoService {
 		public Boolean deleteCreditoById(Integer idCredito);
 		
 		
-		//eligibilidad Prestamo
-		public Boolean eligibilidadPrestamo(Integer idCredito);
-		
-		//Cliente selecto
-		public List<CreditoBean> clientesSelectos();
-		
-		
-		// Upgrade cliente
-		public Boolean upgradeCliente(Integer idCredito);
 
 	
 	

@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.banco.bean.ClienteAuxBean;
 import com.banco.bean.ClienteBean;
+import com.banco.bean.CreditoBean;
 import com.banco.service.ClienteService;
+import com.banco.service.CreditoService;
 
 
 @RequestMapping("/cliente")
@@ -25,6 +27,9 @@ public class ClienteController {
 
 	@Autowired
 	private ClienteService clienteService;
+	
+	@Autowired
+	private CreditoService creditoservice;
 	
 	@PostMapping("/save")
 	public ResponseEntity<Integer> save(@RequestBody ClienteBean clienteBean){
@@ -70,4 +75,40 @@ public class ClienteController {
 	public ResponseEntity<Boolean> eligibilidadPrestamo(@PathVariable("idCliente") Integer idCliente){
 		return new ResponseEntity<>(this.clienteService.eligibilidadPrestamo(idCliente), HttpStatus.OK);
 	}
+	
+	@GetMapping("/clienteSelecto")
+	public ResponseEntity<List<ClienteAuxBean>> clienteSelecto(){
+		return new ResponseEntity<> (this.clienteService.clienteSelecto(), HttpStatus.OK);
+	}
+	
+	@GetMapping("/upgradecliente/{idCliente}")
+	public ResponseEntity<Boolean> upgradecliente(@PathVariable("idCliente") Integer idCliente){
+		return new ResponseEntity<>(this.clienteService.upgradecliente(idCliente), HttpStatus.OK);
+	}
+	
+	@PostMapping("/crearCredito")
+	public ResponseEntity<Integer> crearCredito(@RequestBody CreditoBean creditoNuevo){
+		return new ResponseEntity<>(this.creditoservice.crearCredito(creditoNuevo), HttpStatus.OK);
+	}
+	
+	@GetMapping("/listaCreditos")
+	public ResponseEntity<List<CreditoBean>> listaCreditos(){
+		return new ResponseEntity<> (this.creditoservice.listaCreditos(), HttpStatus.OK);
+	}
+	
+	@GetMapping("/creditoPorId/{idCliente}")
+	public ResponseEntity<CreditoBean> creditoPorId(@PathVariable("idCliente") Integer idCliente){
+		return new ResponseEntity<>(this.creditoservice.creditoPorId(idCliente), HttpStatus.OK);
+	}
+	
+	@PutMapping("/updateCredito")
+	public ResponseEntity<Boolean> updateCredito(@RequestBody CreditoBean creditoBean){
+		return new ResponseEntity<>(this.creditoservice.updateCredito(creditoBean), HttpStatus.OK);
+	}
+	
+	@DeleteMapping("/deleteCreditoById/{idCliente}")
+	public ResponseEntity <Boolean> deleteCreditoById (@PathVariable ("idCliente") Integer idCliente){
+		return new ResponseEntity<Boolean>(this.creditoservice.deleteCreditoById(idCliente),HttpStatus.OK);
+	}
+	
 }
