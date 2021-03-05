@@ -76,6 +76,7 @@ public class ClienteController {
 		return new ResponseEntity<>(this.clienteService.eligibilidadPrestamo(idCliente), HttpStatus.OK);
 	}
 	
+<<<<<<< HEAD
 	@GetMapping("/clienteSelecto")
 	public ResponseEntity<List<ClienteAuxBean>> clienteSelecto(){
 		return new ResponseEntity<> (this.clienteService.clienteSelecto(), HttpStatus.OK);
@@ -110,5 +111,18 @@ public class ClienteController {
 	public ResponseEntity <Boolean> deleteCreditoById (@PathVariable ("idCliente") Integer idCliente){
 		return new ResponseEntity<Boolean>(this.creditoservice.deleteCreditoById(idCliente),HttpStatus.OK);
 	}
+=======
+	@GetMapping("/saldoUsuario/{idCliente}")
+	public ResponseEntity<ClienteAuxBean> saldoUsuario(@PathVariable("idCliente") Integer idCliente){
+		return new ResponseEntity<>(this.clienteService.saldoUsuario(idCliente), HttpStatus.FOUND);
+		
+	}
+	
+	@PutMapping ("/transferirCliente/{idEmisor}/{idReceptor}/{monto}")
+	public ResponseEntity <Boolean> transferirCliente(@PathVariable ("idEmisor") Integer idEmisor, @PathVariable ("idReceptor") Integer idReceptor,@PathVariable ("monto") double monto){
+		return new ResponseEntity<Boolean>(this.clienteService.transferirCliente(idEmisor, idReceptor, monto),HttpStatus.OK);
+		
+}
+>>>>>>> c0c14454da882d5f2905714cd68218b7edcd442c
 	
 }
