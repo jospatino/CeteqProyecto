@@ -261,6 +261,25 @@ public class ClienteServiceImpl implements ClienteService{
 	
 		return clienteBean;
 	}
+
+	@Override
+	public Boolean transferirCliente(Integer idEmisor, Integer idReceptor, double monto) {
+		ClienteModel cliente = clienteRepo.findById(idEmisor).orElseThrow(null);
+		ClienteModel cliente1 = clienteRepo.findById(idReceptor).orElseThrow(null);
+		
+		cliente.getDebitoModel().setSaldo(cliente.getDebitoModel().getSaldo() - monto);
+		cliente1.getDebitoModel().setSaldo(cliente1.getDebitoModel().getSaldo() + monto);
+		
+		
+		return true;
+	}
 	
+	//	public void transferencia(int transferencia, Persona persona) {
+	//persona.getCuenta().setSaldo(persona.getCuenta().getSaldo() + transferencia);
+	//this.cuenta.setSaldo(this.cuenta.getSaldo() - transferencia);
 	
-}
+		
+		
+	}
+
+

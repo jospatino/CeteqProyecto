@@ -74,5 +74,13 @@ public class ClienteController {
 	@GetMapping("/saldoUsuario/{idCliente}")
 	public ResponseEntity<ClienteAuxBean> saldoUsuario(@PathVariable("idCliente") Integer idCliente){
 		return new ResponseEntity<>(this.clienteService.saldoUsuario(idCliente), HttpStatus.FOUND);
+		
+	}
+	
+	@PutMapping ("/transferirCliente/{idEmisor}/{idReceptor}/{monto}")
+	public ResponseEntity <Boolean> transferirCliente(@PathVariable ("idEmisor") Integer idEmisor, @PathVariable ("idReceptor") Integer idReceptor,@PathVariable ("monto") double monto){
+		return new ResponseEntity<Boolean>(this.clienteService.transferirCliente(idEmisor, idReceptor, monto),HttpStatus.OK);
+		
 }
+	
 }

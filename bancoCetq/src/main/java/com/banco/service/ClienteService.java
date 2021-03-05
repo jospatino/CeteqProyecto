@@ -20,5 +20,6 @@ public interface ClienteService {
 	public List<ClienteAuxBean> clienteSelecto();
 	public Boolean upgradecliente(Integer idCliente);
 	public ClienteAuxBean saldoUsuario (Integer idCliente);
+	public Boolean transferirCliente (Integer idEmisor, Integer idReceptor, double monto);
 	
 }
